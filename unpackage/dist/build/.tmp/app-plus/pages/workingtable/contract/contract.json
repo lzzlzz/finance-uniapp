@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "合同归档",
+  "usingComponents": {
+    "uni-icons": "/components/uni-icons/uni-icons"
+  }
+}

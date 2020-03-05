@@ -1,0 +1,49 @@
+
+.content.data-v-de53a5ea {position: absolute; top: 0;width: 100%;height: 100%;}
+.logo.data-v-de53a5ea {text-align: center; margin: 96rpx auto 73rpx auto;}
+.logo image.data-v-de53a5ea {width: 50%;}
+.login-form.data-v-de53a5ea {width: 630rpx; margin: auto;}
+.login-form .item.data-v-de53a5ea {
+	width: 630rpx;
+	height: 84rpx;
+	border-radius: 6rpx;
+	margin-bottom: 33rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-around;
+	        justify-content: space-around;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	background-color: #d9c298;
+}
+.login-form input.data-v-de53a5ea {color: #FFFFFF; height: 84rpx; line-height: 84rpx; border-bottom: 1rpx solid #F0F0F0;}
+.login-form .item .icon.data-v-de53a5ea{width: 36rpx; height: 40rpx;}
+.input-placeholder.data-v-de53a5ea {color: #FFFFFF; line-height: 84rpx; height: 84rpx; margin: auto;}
+.login-form .btn.data-v-de53a5ea{ margin: 43rpx auto 22rpx auto;
+	text-align: center;
+	height: 84rpx;
+	line-height: 84rpx;
+	border-radius: 86rpx;
+	background-color: #FFFFFF;
+}
+.forgot-pwd.data-v-de53a5ea {text-align: right;}
+.login-third .text.data-v-de53a5ea{margin: 137rpx auto 106rpx auto; text-align: center;
+}
+.login-third .flex.data-v-de53a5ea{text-align: center; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-justify-content: space-around; justify-content: space-around;
+}
+.login-third .flex image.data-v-de53a5ea {width: 88rpx; height: 88rpx;}
+text.data-v-de53a5ea{
+	height: 30rpx;
+	font-family: PingFang-SC-Regular;
+	font-size: 32rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	line-height: 40rpx;
+	letter-spacing: 3rpx;
+	color: #d9c298;
+}
+
+
+

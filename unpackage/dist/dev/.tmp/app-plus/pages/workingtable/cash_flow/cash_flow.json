@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "现金流水",
+  "usingComponents": {
+    "wuc-tab": "/components/wuc-tab/wuc-tab",
+    "uni-load-more": "/components/uni-load-more/uni-load-more",
+    "uni-calendar": "/components/uni-calendar-1/uni-calendar"
+  }
+}

@@ -1,0 +1,71 @@
+
+.box {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	background-color: #c6ac80;
+}
+text {
+	color: #F0F0F0;
+}
+.pro-num {
+	font-size: 2em;
+}
+.column {
+	-webkit-flex-basis: 100%;
+	    -ms-flex-preferred-size: 100%;
+	        flex-basis: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	margin-left: -70rpx;
+}
+.item {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	margin: 15rpx auto;
+}
+.the-step {
+	background-color: #FFFFFF;
+	width: 90%;
+	height: 120rpx;
+	margin: 0 auto;
+}
+.the-grid {
+	margin-top: 1rpx;
+	background-color: #FFFFFF;
+	padding: 20rpx 30rpx;
+}
+.grid-image {
+	width: 90rpx;
+	height: 90rpx;
+}
+.text {
+	color: #7d7d7d;
+}
+

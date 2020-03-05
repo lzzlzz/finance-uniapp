@@ -1,0 +1,50 @@
+/*公共按钮*/
+.user-set-btn{
+	width: 100%;
+	margin:20upx 0;
+	background: #6699CC;
+	border: 0!important;
+}
+.user-set-btn-disable{
+	background: #F4F4F4!important;
+	border: 1upx solid #EEEEEE!important;
+	color: #909090!important;
+}
+.body{
+	padding: 0 20upx!important;
+}
+.common-input{
+	font-size: 30upx;
+	border-bottom: 1upx solid #F4F4F4;
+}
+.login-title{
+	width: 100%;
+	height: 64upx;
+	margin:20upx 0;
+	margin-top: 48upx;
+	margin-bottom: 20upx;
+	padding-left: 24upx;
+	padding-right: 24upx ;
+	background: #F0F0F0!important;
+	font-size: 80upx;
+}
+/* flex布局 */
+.u-f,.u-f-ac,.u-f-ajc{
+	display: flex;
+}
+.u-f-ac,.u-f-ajc{
+	align-items: center;
+}
+.u-f-ajc{
+	justify-content: center;
+}
+.u-f-jsb{
+	justify-content: space-between;
+}
+.u-f1{
+	flex: 1;
+}
+.u-f-column{
+	flex-direction: column;
+}
+

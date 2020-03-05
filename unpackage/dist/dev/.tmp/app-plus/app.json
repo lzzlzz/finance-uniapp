@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/service/service",
+    "pages/service/registered_company_details",
+    "pages/service/accounting_and_tax_reporting_details",
+    "pages/service/change_of_enterprise_details",
+    "pages/service/message",
+    "pages/workingtable/details/details",
+    "pages/workingtable/cash_flow/cash_flow",
+    "pages/workingtable/profit/profit",
+    "pages/workingtable/tax/tax",
+    "pages/workingtable/budget/budget",
+    "pages/workingtable/cash_flow_statement/cash_flow_statement",
+    "pages/workingtable/payable/payable",
+    "pages/workingtable/payable/detailList/detailList",
+    "pages/workingtable/receviable/receviable",
+    "pages/workingtable/receviable/detailList/detailList",
+    "pages/workingtable/contract/contract",
+    "pages/workingtable/contract/contractList/contractList",
+    "pages/workingtable/contract/contractPreview/contractPreview",
+    "pages/my/index",
+    "pages/my/login",
+    "pages/my/feedback",
+    "pages/my/recommand"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "finance-uniapp",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/service/service",
+        "iconPath": "static/images/service.png",
+        "selectedIconPath": "static/images/service_select.png",
+        "text": "服务"
+      },
+      {
+        "pagePath": "pages/workingtable/details/details",
+        "iconPath": "static/images/workingtable.png",
+        "selectedIconPath": "static/images/workingtable_select.png",
+        "text": "工作台"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "static/images/my.png",
+        "selectedIconPath": "static/images/my.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 600000
+  },
+  "nvueCompiler": "uni-app",
+  "renderer": "auto",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "慧界智能财税",
+  "compilerVersion": "2.6.1",
+  "usingComponents": {
+    "uni-calendar": "/components/uni-calendar-1/uni-calendar"
+  }
+}

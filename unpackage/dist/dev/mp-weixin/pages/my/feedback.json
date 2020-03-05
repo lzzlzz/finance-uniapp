@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "意见反馈",
+  "usingComponents": {
+    "uni-list": "/components/l-components/uni-list/uni-list",
+    "uni-list-item": "/components/l-components/uni-list-item/uni-list-item",
+    "w-input": "/components/l-components/watch-login/watch-input",
+    "w-button": "/components/l-components/watch-login/watch-button"
+  }
+}

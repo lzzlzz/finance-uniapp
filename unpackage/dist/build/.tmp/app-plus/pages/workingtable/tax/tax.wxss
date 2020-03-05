@@ -1,0 +1,17 @@
+
+.box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-content: flex-start;
+          align-content: flex-start;
+  background-color: #c6ac80;
+}
+.text-white {color: #F0F0F0;}
+.pro-num {font-size: 2em;}
+.item {display: -webkit-box;display: -webkit-flex;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-webkit-flex-direction: column;flex-direction: column; margin: 15rpx 25rpx;}
+.uni-list::before{display: none !important;}
+.uni-triplex-col{padding: 8rpx 0;}
+

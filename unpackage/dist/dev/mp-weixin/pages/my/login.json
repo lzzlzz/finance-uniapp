@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "登陆",
+  "usingComponents": {
+    "w-input": "/components/l-components/watch-login/watch-input",
+    "w-button": "/components/l-components/watch-login/watch-button"
+  }
+}

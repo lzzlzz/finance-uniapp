@@ -1,0 +1,149 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/service/service",
+			"style": {"navigationBarTitleText": "服务支持"}
+		},
+		{
+            "path" : "pages/service/registered_company_details",
+            "style" : {"navigationBarTitleText": "注册公司"}
+        },{
+            "path" : "pages/service/accounting_and_tax_reporting_details",
+            "style" : {"navigationBarTitleText": "记账报税"}
+        }
+		,{
+		    "path" : "pages/service/change_of_enterprise_details",
+		    "style" : {"navigationBarTitleText": "企业变更"}
+		}
+		
+        ,{
+            "path" : "pages/service/message",
+            "style" : {}
+        }
+		// ,
+		// {
+		// 	"path": "pages/workingtable/index/index",
+		// 	"style": {
+				
+		// 	}
+		// }
+		,{
+		    "path" : "pages/workingtable/details/details",
+		    "style" : {"navigationBarTitleText": "慧界智能财税系统"}
+		}
+		,{
+		    "path" : "pages/workingtable/cash_flow/cash_flow",
+		    "style" : {"navigationBarTitleText": "现金流水"}
+		}
+		,{
+		    "path" : "pages/workingtable/profit/profit",
+		    "style" : {"navigationBarTitleText": "利润表"}
+		}
+		,{
+		    "path" : "pages/workingtable/tax/tax",
+		    "style" : {"navigationBarTitleText": "纳税表"}
+		}
+		,{
+		    "path" : "pages/workingtable/budget/budget",
+		    "style" : {"navigationBarTitleText": "资产及负债"}
+		}
+		,{
+		    "path" : "pages/workingtable/cash_flow_statement/cash_flow_statement",
+		    "style" : {"navigationBarTitleText": "现金流量"}
+		}
+		,{
+		    "path" : "pages/workingtable/payable/payable",
+		    "style" : {"navigationBarTitleText": "应付账款"}
+		}
+		,{
+		    "path" : "pages/workingtable/payable/detailList/detailList",
+		    "style" : {}
+		}
+		,{
+		    "path" : "pages/workingtable/receviable/receviable",
+		    "style" : {"navigationBarTitleText": "应收账款"}
+		}
+		,{
+		    "path" : "pages/workingtable/receviable/detailList/detailList",
+		    "style" : {}
+		}
+		,{
+		    "path" : "pages/workingtable/contract/contract",
+		    "style" : {"navigationBarTitleText": "合同归档"}
+		}
+		// ,{
+		//     "path" : "pages/workingtable/balance/balance",
+		//     "style" : {}
+		// }
+		// ,{
+		//     "path" : "pages/workingtable/financial/financial",
+		//     "style" : {}
+		// }
+		
+		,{
+		    "path" : "pages/workingtable/contract/contractList/contractList",
+		    "style" : {}
+		}
+		,{
+		    "path" : "pages/workingtable/contract/contractPreview/contractPreview",
+		    "style" : {}
+		},
+		{
+			"path": "pages/my/index",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}
+		,{
+		    "path" : "pages/my/login",
+		    "style" : {
+				"navigationBarTitleText": "登录"
+		
+			}
+		}
+		,{
+		    "path" : "pages/my/feedback",
+		    "style" : {
+				"navigationBarTitleText": "意见反馈"
+		
+			}
+		}
+		,{
+		    "path" : "pages/my/resetpassword",
+		    "style" : {
+				"navigationBarTitleText": "修改密码"
+			}
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "finance-uniapp",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#3cc51f",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/service/service",
+				"iconPath": "static/images/service.png",
+				"selectedIconPath": "static/images/service_select.png",
+				"text": "服务"
+			},
+			{
+				"pagePath": "pages/workingtable/details/details",
+				"iconPath": "static/images/workingtable.png",
+				"selectedIconPath": "static/images/workingtable_select.png",
+				"text": "工作台"
+			},
+			{
+				"pagePath": "pages/my/index",
+				"iconPath": "static/images/my.png",
+				"selectedIconPath": "static/images/my.png",
+				"text": "我的"
+			}
+		]
+	}
+}

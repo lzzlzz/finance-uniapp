@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "利润表",
+  "usingComponents": {
+    "uni-calendar": "/components/uni-calendar-1/uni-calendar"
+  }
+}
