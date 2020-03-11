@@ -14,7 +14,7 @@
 		<view class="service-title">注册公司</view>
 		<view class="service-body">
 			<uni-grid :column="3" :highlight="true" @change="open_registered_company_details">
-				<uni-grid-item v-for="(item, index) in registered_company_list" :key="index">
+				<uni-grid-item v-for="(item, index1) in registered_company_list" :key="index1">
 					<image :src="item.url" class="image" mode="aspectFill" />
 					<text class="text">{{ item.text }}</text>
 				</uni-grid-item>
@@ -23,7 +23,7 @@
 		<view class="service-title">记账报税</view>
 		<view class="service-body">
 			<uni-grid :column="3" :highlight="true" @change="open_accounting_and_tax_reporting_details">
-				<uni-grid-item v-for="(item, index) in accounting_and_tax_reporting_list" :key="index">
+				<uni-grid-item v-for="(item, index2) in accounting_and_tax_reporting_list" :key="index2">
 					<image :src="item.url" class="image" mode="aspectFill" />
 					<text class="text">{{ item.text }}</text>
 				</uni-grid-item>
@@ -33,7 +33,7 @@
 		<view class="service-title">企业变更</view>
 		<view class="service-body">
 			<uni-grid :column="3" :highlight="true" @change="open_change_of_enterprise_details">
-				<uni-grid-item v-for="(item, index) in change_of_enterprise_list" :key="index">
+				<uni-grid-item v-for="(item, index3) in change_of_enterprise_list" :key="index3">
 					<image :src="item.url" class="image" mode="aspectFill" />
 					<text class="text">{{ item.text }}</text>
 				</uni-grid-item>

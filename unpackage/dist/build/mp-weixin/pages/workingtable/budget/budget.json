@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "资产及负债",
+  "usingComponents": {
+    "wuc-tab": "/components/wuc-tab/wuc-tab"
+  }
+}

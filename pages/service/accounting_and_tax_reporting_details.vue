@@ -4,13 +4,13 @@
 
 
 		<view class="title">{{taxpayer_list[0].name}}</view>
-		<view class="text" v-for="(info,index) in taxpayer_list[0].detail" :key="'info1'+index">
+		<view class="text" v-for="(info) in taxpayer_list[0].detail" >
 			<view>{{info.name}}</view>
-			<view class="text" v-for="(detail,index) in info.detail" :key="'info2'+index">{{detail}}</view>
+			<view class="text" v-for="(detail) in info.detail" >{{detail}}</view>
 		</view>
 
 		<view class="title">{{taxpayer_list[1].name}}</view>
-		<view class="text" v-for="(info,index) in taxpayer_list[1].detail" :key="'info3'+index">{{info}}</view>
+		<view class="text" v-for="(info) in taxpayer_list[1].detail" >{{info}}</view>
 		<uni-fab :pattern="fab_para.pattern" :content="fab_para.content" :horizontal="fab_para.horizontal" :vertical="fab_para.vertical"
 		 :direction="fab_para.direction" @trigger="fab_trigger"></uni-fab>
 	</view>

@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/uni-steps-1/uni-steps"],{"1c89":function(t,n,e){"use strict";e.r(n);var u=e("e594"),i=e.n(u);for(var c in u)"default"!==c&&function(t){e.d(n,t,function(){return u[t]})}(c);n["default"]=i.a},"2c9d":function(t,n,e){"use strict";var u={"uni-icons":()=>Promise.all([e.e("common/vendor"),e.e("components/uni-icons/uni-icons")]).then(e.bind(null,"a621"))},i=function(){var t=this,n=t.$createElement;t._self._c},c=[];e.d(n,"b",function(){return i}),e.d(n,"c",function(){return c}),e.d(n,"a",function(){return u})},3729:function(t,n,e){"use strict";e.r(n);var u=e("2c9d"),i=e("1c89");for(var c in i)"default"!==c&&function(t){e.d(n,t,function(){return i[t]})}(c);e("c6db");var o,r=e("f0c5"),s=Object(r["a"])(i["default"],u["b"],u["c"],!1,null,null,null,!1,u["a"],o);n["default"]=s.exports},4126:function(t,n,e){},c6db:function(t,n,e){"use strict";var u=e("4126"),i=e.n(u);i.a},e594:function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var u=function(){return e.e("components/uni-icon/uni-icon").then(e.bind(null,"cecd"))},i={name:"uni-steps",components:{uniIcons:u},props:{direction:{type:String,default:"row"},activeColor:{type:String,default:"#1aad19"},active:{type:[Number,String],default:0},options:{type:Array,default:function(){return[]}}},data:function(){return{}},computed:{steps:function(){var t=this,n=[];return this.options.forEach(function(e,u){var i={};i.title=e.title,i.desc=e.desc,i.status=t.getStatus(u),n.push(i)}),n}},methods:{getStatus:function(t){return t<Number(this.active)?"finish":t===Number(this.active)?"process":""}}};n.default=i}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/uni-steps-1/uni-steps-create-component',
+    {
+        'components/uni-steps-1/uni-steps-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('543d')['createComponent'](__webpack_require__("3729"))
+        })
+    },
+    [['components/uni-steps-1/uni-steps-create-component']]
+]);

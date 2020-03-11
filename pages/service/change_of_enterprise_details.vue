@@ -5,7 +5,7 @@
 		<view class="title">{{show_list[0].name}}</view>
 		<view>
 			<uni-grid :column="3" :highlight="true">
-				<uni-grid-item v-for="(item, index) in show_list[0].detail" :key="'info1'+index">
+				<uni-grid-item v-for="(item) in show_list[0].detail" >
 					<image :src="item.url" class="image" mode="aspectFill" />
 					<text class="text">{{ item.text }}</text>
 				</uni-grid-item>
@@ -14,13 +14,13 @@
 		<view class="text"> {{show_list[0].description}}</view>
 
 		<view class="title">{{show_list[1].name}}</view>
-		<view class="text" v-for="(info,index) in show_list[1].detail" :key = "'info2'+index">
+		<view class="text" v-for="(info) in show_list[1].detail" >
 			<view>{{info.name}}</view>
-			<view class="text" v-for="(detail, index) in info.detail" :key = "'info3'+index">{{detail}}</view>
+			<view class="text" v-for="(detail) in info.detail" >{{detail}}</view>
 		</view>
 
 		<view class="title">{{show_list[2].name}}</view>
-		<view class="text" v-for="(info,index) in show_list[2].detail" :key = "'info4'+index">{{info}}</view>
+		<view class="text" v-for="(info) in show_list[2].detail" >{{info}}</view>
 		<uni-fab :pattern="fab_para.pattern" :content="fab_para.content" :horizontal="fab_para.horizontal" :vertical="fab_para.vertical"
 		 :direction="fab_para.direction" @trigger="fab_trigger"></uni-fab>
 	</view>

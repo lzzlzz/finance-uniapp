@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "慧界智能财税系统",
+  "usingComponents": {
+    "uni-grid": "/components/uni-grid/uni-grid",
+    "uni-grid-item": "/components/uni-grid-item/uni-grid-item",
+    "uni-steps": "/components/uni-steps-1/uni-steps",
+    "switchc": "/components/zz-switchc/zz-switchc"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "现金流量",
+  "usingComponents": {
+    "wuc-tab": "/components/wuc-tab/wuc-tab",
+    "uni-load-more": "/components/uni-load-more/uni-load-more"
+  }
+}

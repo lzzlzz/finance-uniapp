@@ -1,0 +1,1 @@
+.pic_list.data-v-f8b374e4{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-flow:row wrap;flex-flow:row wrap}.pic_list>view.data-v-f8b374e4{-webkit-box-flex:0;-webkit-flex:0 0 240rpx;flex:0 0 240rpx;height:240rpx;margin:7.5rpx 0 0 7.5rpx}.pic_list>view>image.data-v-f8b374e4{width:100%;height:100%}

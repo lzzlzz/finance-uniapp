@@ -196,23 +196,20 @@
 
 
 
-
-
-
 	/* 品型结构的底  */
-.block-list-cell.data-v-63010c71 {
+.block-list-cell.data-v-eeedd6d2 {
 		display: block;
 		width: 100%;
 		margin: 4% 0%;
 }
 	/* 品型结构第一行 第一个口 */
-.block-first-line.data-v-63010c71 {
+.block-first-line.data-v-eeedd6d2 {
 		width: 90%;
 		padding: 0% 0% 3% 5%;
 		margin-right: 5%;
 }
 	/* 品型结构第二行的两个口 */
-.block-second-line.data-v-63010c71 {
+.block-second-line.data-v-eeedd6d2 {
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: flex;
@@ -223,7 +220,7 @@
 		padding-left: 5%;
 }
 	/* 左右两个口 */
-.block-col.data-v-63010c71 {
+.block-col.data-v-eeedd6d2 {
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: flex;
@@ -235,22 +232,22 @@
 		-webkit-justify-content: space-between;
 		        justify-content: space-between;
 }
-._div.data-v-63010c71,
-	scroll-view.data-v-63010c71,
-	swiper.data-v-63010c71 {
+._div.data-v-eeedd6d2,
+	scroll-view.data-v-eeedd6d2,
+	swiper.data-v-eeedd6d2 {
 		box-sizing: border-box;
 }
-scroll-view.data-v-63010c71 {
+scroll-view.data-v-eeedd6d2 {
 		height: 100%;
 }
-._div.data-v-63010c71 {
+._div.data-v-eeedd6d2 {
 		font-size: 28rpx;
 		background-color: #f1f1f1;
 }
-.swiper.data-v-63010c71 {
+.swiper.data-v-eeedd6d2 {
 		height: calc(100vh - 290rpx);
 }
-.cu-bar.data-v-63010c71 {
+.cu-bar.data-v-eeedd6d2 {
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: flex;
@@ -263,7 +260,7 @@ scroll-view.data-v-63010c71 {
 		-webkit-justify-content: space-between;
 		        justify-content: space-between;
 }
-.cu-bar .action.data-v-63010c71 {
+.cu-bar .action.data-v-eeedd6d2 {
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: flex;
@@ -277,32 +274,32 @@ scroll-view.data-v-63010c71 {
 		max-width: 100%;
 		background-color: #ffffff;
 }
-.cu-bar .action.data-v-63010c71:first-child {
+.cu-bar .action.data-v-eeedd6d2:first-child {
 		margin-left: 30rpx;
 		font-size: 30rpx;
 }
-.text-orange.data-v-63010c71 {
+.text-orange.data-v-eeedd6d2 {
 		color: #f37b1d
 }
-.text-black.data-v-63010c71 {
+.text-black.data-v-eeedd6d2 {
 		color: #333333;
 }
-.bg-white.data-v-63010c71 {
+.bg-white.data-v-eeedd6d2 {
 		background-color: #ffffff;
 }
-.padding.data-v-63010c71 {
+.padding.data-v-eeedd6d2 {
 		padding: 30rpx;
 }
-.margin.data-v-63010c71 {
+.margin.data-v-eeedd6d2 {
 		margin: 30rpx;
 }
-.margin-top.data-v-63010c71 {
+.margin-top.data-v-eeedd6d2 {
 		margin-top: 30rpx;
 }
-.text-center.data-v-63010c71 {
+.text-center.data-v-eeedd6d2 {
 		text-align: center;
 }
-.uni-list-cell.data-v-63010c71::after {
+.uni-list-cell.data-v-eeedd6d2::after {
 		position: absolute;
 		z-index: 3;
 		right: 0;
