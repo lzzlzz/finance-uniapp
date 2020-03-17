@@ -1,25 +1,11 @@
 <template>
 	<view>
-		
-		<view class="headline"><text class="cuIcon-titles text-orange"></text>账龄详情</view>
-		<view class="uni-list">
-			<view class="uni-list-cell" hover-class="uni-list-cell-hover" v-for="(value, key) in listData" :key="key" >
-				<view class="uni-media-list" >
-					<view class="uni-media-list-body">
-						<view class="uni-media-list-text-top">
-							<text>{{ value.auxAccCustomerName }}</text>
-						</view>		
-						<view class="uni-media-list-text-bottom">
-							<view >金额：<text style="color: #000000;">{{ value.amount|priceFormat(2,'￥',true) }}</text></view>
-						</view>
-					</view>
-				</view>
-			</view>
-		</view>
+		<self-collapse-item :data="listData"></self-collapse-item>
 	</view>
 </template>
 
 <script>
+	import selfCollapseItem from '@/components/self-collapse-item/self-collapse-item'
 import MinCache from '@/common/storage.js'
 import url_config from '@/common/config.js'
 import uniIcons from '@/components/uni-icons/uni-icons.vue'

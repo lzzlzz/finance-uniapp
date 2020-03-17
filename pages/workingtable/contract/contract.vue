@@ -40,6 +40,7 @@
 import MinCache from '@/common/storage.js'
 import config from '@/common/config.js'
 import uniIcons from '@/components/uni-icons/uni-icons.vue'
+import helper from '@/common/helper.js'
 const url_config = config.get('url_config');
 export default {
 	components: {

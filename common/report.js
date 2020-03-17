@@ -97,7 +97,7 @@ const request = function(){
 		data:{
 			access_token:token,
 			urls:'reportQuery/GetReportData',
-			params: JSON.stringify({"request":this.param}),	//请求报表参数		
+			params: JSON.stringify({"request":this.param}),	//请求报表参数 		
 		},
 		header: {
 			'content-type': 'application/x-www-form-urlencoded' 

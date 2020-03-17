@@ -1,76 +1,30 @@
 <template>
-  <view>
-    <view
-      v-if="maskShow && !insert"
-      :class="{ 'ani-mask-show': aniMaskShow }"
-      class="uni-calendar__mask" />
-    <view
-      v-if="maskShow || insert"
-      :class="{ 'ani-calendar-show': aniMaskShow, 'uni-calendar__static': insert }"
-      class="uni-calendar__box">
-      <view
-        v-if="!insert"
-        class="uni-calendar__nav">
-        <view
-          class="uni-calendar__nav-item"
-          @click="close">取消</view>
-        <view
-          class="uni-calendar__nav-item"
-          @click="confirm">确认</view>
-      </view>
-      <view class="uni-calendar__wrapper">
-        <view class="uni-calenda__content">
-          <view class="uni-calendar__panel">
-            <view
-              class="uni-calendar__date-befor"
-              @tap="dataBefor(-1, 'month')"><text class="iconfont icon-jiantou" /></view>
-            <view class="uni-calendar__panel-box">
-              <view>{{ canlender.year }}年</view>
-              <view>{{ canlender.month }}月</view>
-            </view>
-            <view
-              class="uni-calendar__date-after uni-calendar__rollback"
-              @tap="dataBefor(1, 'month')"><text class="iconfont icon-jiantou " /></view>
-           <!-- <view
-              class="uni-calendar__backtoday"
-              @tap="backtoday">回到今天</view> -->
-          </view>
-          <!-- <view
-            v-if="isLunar"
-            class="uni-calendar__day-detail">
-            <view>{{ canlender.year + '年' + canlender.month + '月' + canlender.date + '日 （' + canlender.lunar.astro + ')' }}</view>
-            <view>
-              {{ canlender.lunar.gzYear + '年' + canlender.lunar.gzMonth + '月' + canlender.lunar.gzDay + '日 (' + canlender.lunar.Animal + '年)' }}
-              {{ canlender.lunar.IMonthCn + canlender.lunar.IDayCn }} {{ canlender.lunar.isTerm ? canlender.lunar.Term : '' }}
-            </view>
-          </view> -->
-          <!-- <view class="uni-calendar__header">
-            <view class="uni-calendar__week">日</view>
-            <view class="uni-calendar__week">一</view>
-            <view class="uni-calendar__week">二</view>
-            <view class="uni-calendar__week">三</view>
-            <view class="uni-calendar__week">四</view>
-            <view class="uni-calendar__week">五</view>
-            <view class="uni-calendar__week">六</view>
-          </view>
-          <uni-calendar-item
-            :canlender="canlender"
-            :lunar="isLunar"
-            @selectDays="selectDays" /> -->
-        </view>
-      </view>
-    </view>
-  </view>
+ <view class="uni-calendar__wrapper">
+   <view class="uni-calenda__content">
+     <view class="uni-calendar__panel">
+       <view
+         class="uni-calendar__date-befor"
+         @tap="dataBefor(-1, 'month')"><text class="iconfont icon-jiantou" /></view>
+       <view class="uni-calendar__panel-box">
+         <view>{{ year }}年</view>
+         <view>{{ month }}月</view>
+       </view>
+       <view
+         class="uni-calendar__date-after uni-calendar__rollback"
+         @tap="dataBefor(1, 'month')"><text class="iconfont icon-jiantou " />
+ 			 </view>
+     </view>
+   
+   </view>
+ </view>
 </template>
 
 <script>
 import CALENDAR from './calendar.js'
-import uniCalendarItem from './uni-calendar-item'
+import {mapState,mapActions,mapMutations} from 'vuex'
+
 export default {
   name: 'UniCalendar',
-  components: {
-    uniCalendarItem
-  },
   props: {
     /**
 		 * 当前日期
@@ -131,12 +85,7 @@ export default {
       default: false
     }
   },
-  data () {
-    /**
-		 * TODO 兼容新旧编译器
-		 * 新编译器（自定义组件模式）下必须使用固定数值，否则部分平台下会获取不到节点。
-		 * 随机数值是在旧编译器下使用的，旧编译器模式已经不推荐使用，后续直接废掉随机数值的写法。
-		 */
+  data () {   
     return {
       maskShow: false, // 显示日历
       aniMaskShow: false,
@@ -178,7 +127,9 @@ export default {
     this.init()
 	
   },
+  computed:mapState('global',['day','month','year']),
   methods: {
+	...mapMutations('global',['setYear','setMonth']),
     init () {
       // 初始化日历
       // this.canlender = this.getWeek(this.date || new Date());
@@ -215,15 +166,16 @@ export default {
 		 如果没有就新建时间 然后要把改变后的结果传给全局时间
 		*/
 	   
-		//console.log(getApp().globalData.month)
-      if (getApp().globalData.month == 0) {//app刚运行 需要对日期进行初始化
+		
+      if (this.month == 0) {//app刚运行 需要对日期进行初始化
         date = new Date()
 		date.setDate(15)
       }else{//全局日期已经有了 已经在别的页面生成日期了 ，就需要在那基础上改
+	
 		date = new Date()
 		date.setDate(15)
-		date.setMonth(getApp().globalData.month-1) //注意设置月份的参数是 0-11
-		date.setFullYear(getApp().globalData.year)
+		date.setMonth(this.month-1) //注意设置月份的参数是 0-11
+		date.setFullYear(this.year)
 		
 	  }
       const canlender = this.getWeek(this.getDate(date, index, 'month'))//根据index的值对月份加一减一
@@ -238,9 +190,8 @@ export default {
 		 */
     setEmit (name) {
 		//初始化的时候就把当前日期设置到全局变量 在将日期给控件之前把时间赋给全局变量
-	
-		getApp().globalData.month = this.canlender.month
-		getApp().globalData.year = this.canlender.year 
+		this.setMonth(this.canlender.month)
+		this.setYear(this.canlender.year )
 	//	console.log(this.canlender)
       const canlender = this.canlender
       this.$emit(name, {  
@@ -582,63 +533,7 @@ export default {
 	content: '\e606';
 }
 
-.uni-calendar__mask {
-	position: fixed;
-	bottom: 0;
-	top: 0;
-	width: 100%;
-	background: rgba($color: #000, $alpha: 0.4);
-	transition: all 0.3s;
-	opacity: 0;
-	z-index: 9998;
-	&.ani-mask-show {
-		opacity: 1;
-	}
-}
-.header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	height: 100upx;
-	background: #fff;
-	z-index: 10000;
-	// background: $uni-bg-color-grey;
-	font-size: $uni-font-size-lg;
-}
 
-.uni-calendar__box {
-	position: fixed;
-	bottom: 0;
-	z-index: 9999;
-	width: 100%;
-	box-sizing: border-box;
-	transition: all 0.3s;
-	transform: translateY(100%);
-	&.ani-calendar-show {
-		transform: translateY(0%);
-	}
-	&.uni-calendar__static {
-		position: static;
-		transform: translateY(0%);
-	}
-	.uni-calendar__nav {
-		display: flex;
-		justify-content: space-between;
-		height: 100upx;
-		border-bottom: 1px #f5f5f5 solid;
-		background: #f5f5f5;
-		padding: 0 10upx;
-		.uni-calendar__nav-item {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 100upx;
-			height: 100upx;
-			color: #333;
-		}
-	}
-}
 
 .uni-calendar__wrapper {
 	width: 100%;

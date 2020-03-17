@@ -1,16 +1,22 @@
 import Vue from 'vue'
-import App from './App'//把App.vue导入进来
-import store from './store'  //把store模块导入
-import priceFormat from '@/common/priceformat.js'//导入金额过滤器
-Vue.prototype.$store = store //将store对象挂载到Vue实例的原型链上 this.$store 就能访问到store对象
-
+import App from './App'
+import store from './store' 
+import priceFormat from '@/common/priceformat.js'
+import uniIcons from '@/components/uni-icons/icons'
 import uniCalendar from "@/components/uni-calendar-1/uni-calendar"
-
+import MinCache from '@/common/storage.js'
+//挂载全局对象
+Vue.prototype.$store = store 
+Vue.prototype.$mc = new MinCache()
+//注册全局组件
+Vue.component('uni-icons',uniIcons)
 Vue.component('uni-calendar',uniCalendar) 
-//注册一个全局过滤器,进行金额格式化
+
+//注册全局过滤器
 Vue.filter('priceFormat', priceFormat)
 
-Vue.config.productionTip = true//启动生产消息,发布前要关闭
+//启动生产消息,发布前要关闭
+Vue.config.productionTip = true
 
 App.mpType = 'app'
 
@@ -18,5 +24,6 @@ const app = new Vue({
 	store,
     ...App
 })
+
 //将app进行编译
 app.$mount()  

@@ -32,6 +32,8 @@ $uni-bg-color:#ffffff;
 $uni-bg-color-grey:#f8f8f8;
 $uni-bg-color-hover:#f1f1f1;//点击状态颜色
 $uni-bg-color-mask:rgba(0, 0, 0, 0.4);//遮罩颜色
+$uni-bg-color-coffee:#d9c298;//app自有风格背景色
+$uni-bg-color-panel: #c6ac80;//app面板的底色
 
 /* 边框颜色 */
 $uni-border-color:#c8c7cc;
@@ -51,7 +53,7 @@ $uni-img-size-lg:80upx;
 /* Border Radius */
 $uni-border-radius-sm: 4upx;
 $uni-border-radius-base: 6upx;
-$uni-border-radius-lg: 12upx;
+$uni-border-radius-lg: 40upx;
 $uni-border-radius-circle: 50%;
 
 /* 水平间距 */

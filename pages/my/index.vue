@@ -1,33 +1,39 @@
 <template>
 	<view class="content">
-		<!--未登录-->
-		<view v-if="!hasLogin" class="login-title "> 
-			<view class="fontsize">未登录</view>
-			<view class="u-f-ajc " @tap="openLogin">点击此处即可登录！</view>
+		<!-- 用户区域， -->
+		<view class="example-user">
+			
+			<view  class="example-title">
+				<image src="/static/images/l-img/logo.jpg"></image>
+				<text v-if="isLog">您好,{{userInfo.name}} </text>
+				<text v-else>您好，请登录</text>
+				</view>
 		</view>
-		<!--已登录-->
-		<view v-if="hasLogin" class="login-title u-f-ajc login-padding login-font-color">您好,用户<!-- {{userInfo.username}} --></view>
 		
-		<view class="example-title">智能服务</view>
-		<uni-list>
-			<!-- <uni-list-item title="意见反馈" thumb="/static/images/l-img/feedback.png" @click.native='feedbackPage'></uni-list-item> -->
-			<uni-list-item title="客服电话" thumb="/static/images/l-img/phone.png" showArrow="false" @click.native='phoneCall'></uni-list-item>
-			<!-- <uni-list-item title="修改密码" thumb="/static/images/l-img/gift.png" @click.native="recommandPage"></uni-list-item> -->
-		</uni-list>		
+		<!-- 列表区域 -->
+		<view class="example-content">
+			<self-title Chinese="智能服务" English="Service"></self-title>
+			<uni-list>	
+				<uni-list-item title="客服电话" thumb="/static/images/l-img/phone.png" showArrow="false" @click.native='phoneCall'></uni-list-item>
+				<uni-list-item title="修改密码" thumb="/static/images/l-img/gift.png" @click.native="recommandPage"></uni-list-item>
+			</uni-list>		
+			<self-title Chinese="其他" English="Items"></self-title>
+			<uni-list>
+				<uni-list-item title="清除缓存" thumb="/static/images/l-img/clear.png" show-arrow="false" @click.native='clear'></uni-list-item>
+			</uni-List>
+		</view>
 		
-		<view  class="example-title">其它</view>
-		<uni-list>
-			<uni-list-item title="清除缓存" thumb="/static/images/l-img/clear.png" show-arrow="false" @click.native='clear'></uni-list-item>
-		</uni-List>
-		
-		<view class="exit_Button">
-            <button v-if="hasLogin" type="default" @tap="bindLogout">退出登录</button>
+		<!-- 退出按钮 -->
+		<view class="exit-button">
+			<button  v-if="isLog" type="warn"  @tap="bindLogout">退出登录</button>
+			<button  v-else type="warn"  @tap="openLogin">点我登录</button>
 		</view>
 		
 	</view>
 </template>
 
 <script>
+	import selfTitle from '@/components/self-title/self-title.vue'
     import {
 		mapState,
 		mapMutations
@@ -36,72 +42,32 @@
 	import uniListItem from '@/components/l-components/uni-list-item/uni-list-item.vue'
 	
 	export default {
-		computed: mapState(['forcedLogin','hasLogin', 'userInfo']),
-		components: {uniList,uniListItem},
+		computed: mapState('login',['userInfo','isLog']),
+		components: {uniList,uniListItem, selfTitle},
         onLoad() {
-            if (!this.hasLogin) {
+            if (!this.isLog) {
                 uni.showModal({
                     title: '未登录',
                     content: '您未登录，需要登录后才能继续',
-                    /**
-                     * 如果需要强制登录，不显示取消按钮
-                     */
-                    showCancel: !this.forcedLogin,
+					showCancel:false,
                     success: (res) => {
                         if (res.confirm) {
-							/**
-							 * 如果需要强制登录，使用reLaunch方式
-							 */
-                            if (this.forcedLogin) {
-                                uni.reLaunch({
-                                    url:'login'
-                                });
-                            } else {
-                                uni.navigateTo({
-                                    url:'login'
-                                });
-                            }
+							uni.navigateTo({
+							    url:'login'
+							});
                         }
                     }
                 });
             }
         },	
-		onNavigationBarButtonTap(e) {
-			console.log("点击了设置按钮")
-			console.log(e)
-			console.log(this.hasLogin)
-			console.log(this.userInfo)
-			if(this.hasLogin){
-				uni.navigateTo({
-					url:'set'
-				});
-				return;
-			}
-			else{
-				uni.navigateTo({
-					url:'login'
-				});
-				return;
-			}
-			// if(e.index==0){
-			// 	this.User.navigate({
-			// 		url: '../user-set/user-set',
-			// 	},false)
-			// }
-		},
 		methods:{
-			...mapMutations(['logout']),
+			...mapMutations('login',['logout']),
 			//跳转到登录页面
 			openLogin(){
 				uni.navigateTo({
 					url: 'login',
 				});
 			}, 
-			feedbackPage(){
-				uni.navigateTo({
-					url:'feedback',
-				});				
-			},
 			recommandPage(){
 				uni.navigateTo({
 					url: 'resetpassword',
@@ -121,22 +87,8 @@
 					success: res => {
 						if(res.confirm){
 							//先把token提出来然后，清除数据缓存，再把token放进去
-							uni.getStorage({
-								key:'userInfo',
-								success: (res)=> {
-									uni.clearStorage();
-									uni.setStorage({
-										key:'userInfo',
-										data:res.data,
-										success: () => {
-											uni.showToast({
-												title:'清除缓存成功！',
-											});	
-										}
-									})
-								}
-							})
-							
+							this.$mc.clear()
+							this.$mc.set('userInfo',this.userInfo)
 													
 						}
 					}
@@ -150,11 +102,7 @@
 					confirmText:'确定',
 					success: res => {
 						if(res.confirm){
-							uni.clearStorage();
-							this.logout();
-							uni.showToast({
-								title:'您已退出程序！',
-							});							
+							this.logout()							
 						}
 					}
 				});
@@ -172,19 +120,60 @@
 	}
 </script>
 
-<style>
+<style lang="scss" scoped>
 	@import url("../../common/myform.css");
 	@import url("../../common/iconfont.css");
 	@import url("../../components/l-components/watch-login/css/icon.css");
-	@import url("./css/main.css");
+	 // @import '../../common/css/my/main.css';
 	.login-font-color{ color: #BBBBBB; }
 	.login-padding{ padding: 20upx 0; }
-	.exit_Button{
-		margin-top: 48upx;
-		margin-bottom: 20upx;
-		padding-left: 24upx;
-		padding-right: 24upx ;
+	.content{
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		.example-user{
+			height: 30%;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			.example-title{
+				background-color: #FFFFFF;
+				height: 120rpx;
+				margin-bottom: 50rpx;
+				>image{
+					width: 150rpx;
+					height: 150rpx;
+					margin: -75rpx 40rpx 0 40rpx;
+				}
+				>text{
+					
+				}
+			}
+		}
+		.example-content{
+			height: 55%;
+			.example-title{
+				background-color: #FFFFFF;
+				height: 80rpx;
+				line-height: 80rpx;
+				padding-left: 20rpx;
+			}
+		}
+		.exit-button{
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			height: 15%;
+			width: 100%;
+			>button{
+				width: 60%;
+				margin-bottom: 60rpx;
+				border-radius: $uni-border-radius-lg;
+			}
+		
+		}
 	}
+	
 	.fontsize{
 		font-size: 32upx;
 	}

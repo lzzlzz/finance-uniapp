@@ -136,7 +136,14 @@ const profit_calculate = function(data, list){//考虑到对利润的处理与�
 	
 };
 
-
+const tax_calculate = function(data, list){
+	list.map((item)=>{
+		if(data.has(item.accountCode)){
+			item.currency = data.get(item.accountCode).currency
+		}
+	})
+	return list
+}
 
 //timetag true 计算月 false 计算年  cr 是收入需要计算的code dr 是支出需要的code 同时计算并返回收入支出和利润
 const money = function(data, crCode, drCode, timetag){ //根据编码数组找里面对应的money 并加总
@@ -151,8 +158,11 @@ const money = function(data, crCode, drCode, timetag){ //根据编码数组找�
 				}
 				let income = codeTovalue(data, crCode, item+'Cr')
 				let expense = codeTovalue(data, drCode, item+'Dr')
-				let profit = income - expense
-				return  {income, expense, profit};
+				return {
+					'income': income,
+					'expense': expense,
+					'profit':income-expense
+				}	
 			};
 //根据列表中的code 从data(map 对象)中找key对应的值相加 
 function codeTovalue(data, codes, key){
@@ -207,6 +217,7 @@ export default {
    money,
    asset_calculate,
    profit_calculate,
+   tax_calculate,
    getdate,
    getAmountUnit,
    showLoading,

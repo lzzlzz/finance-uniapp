@@ -11,7 +11,7 @@
 		</swiper>
 
 
-		<view class="service-title">注册公司</view>
+		<self-title Chinese="注册公司" English="Company"></self-title>
 		<view class="service-body">
 			<uni-grid :column="3" :highlight="true" @change="open_registered_company_details">
 				<uni-grid-item v-for="(item, index1) in registered_company_list" :key="index1">
@@ -20,7 +20,7 @@
 				</uni-grid-item>
 			</uni-grid>
 		</view>
-		<view class="service-title">记账报税</view>
+		<self-title Chinese="记账报税" English="Account&Tax"></self-title>
 		<view class="service-body">
 			<uni-grid :column="3" :highlight="true" @change="open_accounting_and_tax_reporting_details">
 				<uni-grid-item v-for="(item, index2) in accounting_and_tax_reporting_list" :key="index2">
@@ -30,7 +30,7 @@
 			</uni-grid>
 		</view>
 
-		<view class="service-title">企业变更</view>
+		<self-title Chinese="企业变更" English="Enterprise"></self-title>
 		<view class="service-body">
 			<uni-grid :column="3" :highlight="true" @change="open_change_of_enterprise_details">
 				<uni-grid-item v-for="(item, index3) in change_of_enterprise_list" :key="index3">
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+	import selfTitle from '@/components/self-title/self-title.vue'
 	import uniGrid from '@/components/uni-grid/uni-grid.vue'
 	import uniGridItem from '@/components/uni-grid-item/uni-grid-item.vue'
 
@@ -54,7 +55,8 @@
 	export default {
 		components: {
 			uniGrid,
-			uniGridItem
+			uniGridItem,
+			selfTitle
 
 		},
 		data() {
@@ -175,7 +177,8 @@
 	}
 </script>
 
-<style>
+<style lang="scss" scoped>
+	$service-title-padding :30rpx;
 	page {
 		display: flex;
 		flex-direction: column;
@@ -194,39 +197,7 @@
 		height: 100%;
 	}
 
-	.service-title {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		font-size: 32upx;
-		color: #464e52;
-		padding: 30upx;
-		margin-top: 10upx;
-		position: relative;
-		background-color: #fdfdfd
-	}
-
-	.service-title__after {
-		position: relative;
-		color: #031e3c
-	}
-
-	.service-title:after {
-		content: '';
-		position: absolute;
-		left: 0;
-		margin: auto;
-		top: 0;
-		bottom: 0;
-		width: 10upx;
-		height: 40upx;
-		border-top-right-radius: 10upx;
-		border-bottom-right-radius: 10upx;
-		background-color: #031e3c
-	}
-
-
-
+	
 	.service-body {
 		border-top: 1px #f5f5f5 solid;
 		padding: 30upx;

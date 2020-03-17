@@ -1,217 +1,165 @@
 <template>
-	<view  >
-	<!--未登录-->
-	
-		
-		<!-- <cover-image src="/static/images/l-img/bg.png"></cover-image> -->
-		<view style="background-color: #d9c298;" class="content">
+	<view class="login">
+		<!-- 主体内容区 -->
+		<view class="login-container">
+			<!-- logo区 -->
 			<view class="logo">
-				<image src="/static/images/l-img/logo.png" mode="widthFix"></image>
+				<image mode="aspectFit" src="/static/images/l-img/logo.png"></image>
 			</view>
-			<view class="login-form" >
-				<view class="item phone">
-					<image class="icon left" src="/static/images/l-img/icon_phone.png" mode="widthFix"></image>
-					<input v-model="userName"  focus placeholder="手机号" placeholder-class="input-placeholder"/>
-					<image class="icon right" src="/static/images/l-img/icon_phone_right.png" mode="widthFix"  @tap="clearInput()"></image>
-				</view>
-				<view class="item password">
-					<image class="icon left" src="/static/images/l-img/icon_pwd.png" mode="widthFix"></image>
-					<input  type="password" v-model="password"  placeholder="密码" placeholder-class="input-placeholder" v-show="!isShow"/>
-					<input   v-model="password"  placeholder="密码" placeholder-class="input-placeholder" v-show="isShow"/>
-					<image class="icon right" src="/static/images/l-img/icon_pwd_right.png" mode="widthFix" @touchstart="lookpwd()" @touchend="lookpwd()"></image>
-				</view>
-				<view class="btn" :loading="loading" :class="{'user-set-btn-disable': disabled}"
-			type="default" @tap="Login" :disabled="disabled">
-					<text>登录</text>
-				</view>
-				<!-- <view class="forgot-pwd"><text>忘记密码？</text></view> -->
+			
+			<!-- 表单区 -->
+			<view class="login-form">
+				<form  @submit="Login" @reset='Login'>
+					<!-- 用户名 -->
+					<view class="login-input">
+						<uni-icons type="person" size="30" ></uni-icons>
+						<input class="uni-input" type="text" placeholder="手机号" 
+							focus v-model="loginInfo.userName" name="userName" />
+						<uni-icons type="close" @click="loginInfo.userName=''"></uni-icons>
+					</view>
+					
+					<!-- 密码 -->
+					<view  class="login-input">
+						<uni-icons type="locked" size="30" ></uni-icons>
+						<input class="uni-input" :password="showPassword" placeholder="密码"
+							v-model="loginInfo.password" name="password" />
+						<uni-icons :type="showPassword?'eye':'eye-slash'" @click="showPassword=!showPassword"></uni-icons>
+					</view>
+					<view class="login-help">
+						<uni-icons type="help"></uni-icons>
+						<text class="uni-link">忘记密码</text>
+					</view>
+					
+						<button class="login-btn" id='3'   form-type="submit">登录</button>
+						<button class="login-btn entry-btn" id='4' form-type="reset">游客入口</button>
+				</form>
 			</view>
-	    </view>
 			
 			
+		</view>
+		
+		
 	</view>
 	
 </template>
 
 <script>
-	import config from '@/common/config.js'
-	var _this;
-    import {
-        mapState,
-        mapMutations
-		
-	} from 'vuex'		
-	export default {
-
-		data() {
-			return {
-				disabled:true,
-				loading:false,
-				userName:"",
-				password:"",
-				//是否显示密码
-				isShow:false
-			};
-		},
-		
-		watch:{
-			userName(val){
-				this.change();
-			},
-			password(val){
-				this.change();				
+	import {mapActions,mapState} from 'vuex'
+	export default{
+		data(){
+			return{
+				loginInfo:{
+					userName:'',
+					password:''
+				},
+				showPassword:true
 			}
 		},
-		/*在 computed 计算属性方法中使用  mapState 对全局变量进行监控*/
-		computed: mapState(['forcedLogin','hasLogin']),
+		computed:mapState({
+			isLog:state=>state.login.isLog
+		}),
 		methods:{
-		/*在 method中使用  mapMutations  进行全局方法监控，*/
-			...mapMutations(['login']), //将this.login 映射成 this.$store.commit('login')
-			//清除輸入
-			clearInput(){
-				this.userName = ''
+			...mapActions('login',['login']),
+			async Login({mp,detail}){
+				let loginInfo = {
+						//示例账套的用户名和密码
+						userName:'test-user',
+						password:'test-user'
+					}
+				if(mp.type==='submit'){
+					//如果是登录按钮进入的，就用表单中的信息
+					loginInfo= detail.value
+				}
+				if(this.validCheck(loginInfo)){
+					//如果验证成功就发送登录请求
+					let res = await this.login(loginInfo)
+					if(res){
+						uni.switchTab({
+							url:'../workingtable/details/details'
+						})
+					}else{
+						console.log(res)
+						uni.showModal({
+							content:'登录失败'
+						})
+					}
+				}
+				
 				
 			},
-			lookpwd(){
-				this.isShow = !this.isShow
-			},
-			//监听输入框
-			change(){
-				if(this.userName && this.password){
-					this.disabled=false;
-					return;
-				}
-			},
-			//验证数据
-			check(){
-				if(this.userName && this.password && this.userName!="" && this.password!=""){
-					return true;
-				}
-				uni.showToast({
-					title:'请输入用户名及密码',
-					icon:"none"
-				});
-				return false;
-			},
-			//登录
-			Login(){
-				this.loading=true;
-				this.disabled=true;
-				// const data = {
-				//     username: this.username,
-				//     password: this.password
-				// };
-				if(!this.check()){
-					this.loading=false;
-					return;
-				};
-				let url_config = config.get('url_config');
-				uni.request({
-					url:url_config + "/users/"+this.userName+"/username/"+this.password+"/password",
-					
-					method: 'GET',
-					header: {
-						'content-type': 'application/x-www-form-urlencoded' 
-					},
-					success: res => {
-						console.log(this.userName);
-						console.log(this.password);
-						console.log(res);
-						console.log(res.data.success);
-
-						if(!res.data.success){
-							uni.showToast({
-								icon: 'none',
-								title: '用户名或密码不正确'
-							});
-							// setTimeout(function(){
-							// 	//uni.navigateBack({delta:1})
-							// },2000);
-							//uni.hideToast();
-							return;
+			validCheck(info){
+				
+				for(let [k,v] of Object.entries(info)){
+					if(v.trim()===''){
+						let msg = '密码不能为空'
+						if(k==='userName'){
+							msg = '用户名不能为空'
 						}
-						else{
-							uni.showToast({
-								title: '登录成功'
-							});
-							setTimeout(function(){
-								//uni.navigateBack({delta:1})
-							},2000);
-							//uni.hideToast();
-							//将登录返回的数据与缓存中提取的数据一致
-							let userInfo = {}
-							userInfo.token = res.data.data.access_token
-							userInfo.userName = this.userName
-							this.toMain(userInfo);								
-						}
-					},
-					fail: (e) => {
-						uni.showToast({
-							icon: 'none',
-							title: '网络异常,请稍后重试'
-						});	
-						console.log(e)
-					},
-				});
-				this.loading=false;
-			},
-			/*toMain方法*/
-            toMain(data) {
-                this.login(data); //相当于this.$store.commit('login',data) 这个data为提交的变化
-				uni.reLaunch({
-					url:'index'
-				});
-            },
-			reset(){
-				uni.navigateTo({
-					url:'resetpassword'
-				});
+						uni.showModal({
+							title:'登录信息填写错误',
+							content:msg,
+							showCancel:false
+						})
+						return false
+					}
+				}
+				return true
 			}
-
+			
 		}
+		
 	}
+	
 </script>
 
-<style scoped>
-	.content {position: absolute; top: 0;width: 100%;height: 100%;}
-	.logo {text-align: center; margin: 96rpx auto 73rpx auto;}
-	.logo image {width: 50%;}
-	.login-form {width: 630rpx; margin: auto;}
-	.login-form .item {
-		width: 630rpx;
-		height: 84rpx;
-		border-radius: 6rpx;
-		margin-bottom: 33rpx;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		background-color: #d9c298;
-	}
-	.login-form input {color: #FFFFFF; height: 84rpx; line-height: 84rpx; border-bottom: 1upx solid #F0F0F0 ;}
-	.login-form .item .icon{width: 36rpx; height: 40rpx;}
-	.input-placeholder {color: #FFFFFF; line-height: 84rpx; height: 84rpx; margin: auto;}
-	.login-form .btn{ margin: 43rpx auto 22rpx auto;
-		text-align: center;
-		height: 84rpx;
-		line-height: 84rpx;
-		border-radius: 86upx;
-		background-color: #FFFFFF;
-	}
-	.forgot-pwd {text-align: right;}
-	.login-third .text{margin: 137rpx auto 106rpx auto; text-align: center; }
+<style lang="scss" scoped>
 	
-	.login-third .flex{text-align: center; display: flex; justify-content: space-around; }
-	.login-third .flex image {width: 88rpx; height: 88rpx;}
-	text{
-		height: 30rpx;
-		font-family: PingFang-SC-Regular;
-		font-size: 32rpx;
-		font-weight: bold;
-		font-stretch: normal;
-		line-height: 40rpx;
-		letter-spacing: 3rpx;
-		color: #d9c298;
+	.login{
+		height: 100%;
+		background-image: url(/static/images/l-img/login.jpg);
+		
+		.login-container{
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			.logo{
+				height: 40%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				
+			}
+			
+			.login-form{
+				height: 60%;
+				.login-input{
+					display: flex;
+					justify-content: space-around;
+					align-items: center;
+					padding: 6rpx 20rpx;
+					>input{
+						margin: 0 20rpx;
+					}
+				}
+				.login-help{
+					display: flex;
+					justify-content: flex-end;
+					padding: 6rpx 70rpx 4rpx ;
+					
+				}
+				.login-btn{
+					margin: 100rpx 70rpx 6rpx 70rpx;
+					border-radius: $uni-border-radius-lg;
+				}
+				.entry-btn{
+					margin-top: 10rpx;
+				}
+				
+			}
+				
+			
+			
+		}
 	}
-	
 	
 </style>

@@ -616,6 +616,31 @@ const profitList = [{
 					formula:['29','-30']//c33-c34
 				}];
 
+const taxList = [{
+					taxName:'应交增值税',
+					accountCode:'22210102',
+					currency:0.00
+				},{
+					taxName:'应交所得税',
+					accountCode:'222106',
+					currency:0.00
+				},{
+					taxName:'印花税',
+					accountCode:'222118',
+					currency:0.00
+				},{
+					taxName:'地方教育费附加',
+					accountCode:'222116',
+					currency:0.00
+				},{
+					taxName:'教育费附加',
+					accountCode:'222113',
+					currency:0.00
+				},{
+					taxName:'应交城市维护建设税',
+					accountCode:'222108',
+					currency:0.00
+				}];
 
 
 
@@ -628,4 +653,5 @@ export  default {
 	assetList,
 	budgetList,
 	profitList,
+	taxList
 }

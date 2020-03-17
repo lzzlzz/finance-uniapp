@@ -1,7 +1,7 @@
 <template>
 	<view>
 
-		<uni-calendar :insert="true" :lunar="true" :disable-before="true" :start-date="'2019-3-2'" :end-date="'2019-5-20'"
+		<uni-calendar :insert="true" 
 		 @change="change" />
 
 		<!-- 选项卡 -->
@@ -13,59 +13,16 @@
 				<swiper-item>
 					<scroll-view scroll-y='true' style="height: 100%;" @scrolltolower="getData()">
 						<!-- 多行列表 -->
-
-						<view class="uni-list">
-							<block v-for="(item,index) in incomeLists" :key="index">
-								<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-									<view class="block-list-cell">
-										<view class="block-first-line">
-											<view style="word-break: break-all;"><text class="uni-title">{{item.name}}</text></view>
-										</view>
-										<view class="block-second-line">
-											<view class="block-col">
-												<text class="uni-text">{{item.amount|priceFormat(2,'￥',true)}}</text>
-												<text class="uni-text-small uni-ellipsis text-gray">金额</text>
-											</view>
-											<view class="block-col">
-												<text class="uni-text">{{item.direction}}</text>
-												<text class="uni-text-small uni-ellipsis text-gray ">流动方向</text>
-											</view>
-										</view>
-									</view>
-
-					
-								</view>
-							</block>
-						</view>
+						<self-list :data="incomeLists" :istrip="true" :attrs='attrs'></self-list>
 						<uni-load-more :status="status" :content-text="contentText" @handload="getData()" />
 					</scroll-view>
 				</swiper-item>
 				<swiper-item>
 					<scroll-view scroll-y='true' style="height: 100%;" @scrolltolower="getData()">
-						<!-- <div class="bg-white padding margin text-center text-black">{{item.name}}</div> -->
+						
 						<!-- 多行列表 -->
 
-						<view class="uni-list">
-							<block v-for="(item,index) in expenseLists" :key="index">
-								<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-									<view class="block-list-cell">
-										<view class="block-first-line">
-											<view style="word-break: break-all;"><text class="uni-title ">{{item.name}}</text></view>
-										</view>
-										<view class="block-second-line">
-											<view class="block-col">
-												<text class="uni-text">{{item.amount|priceFormat(2,'￥',true)}}</text>
-												<text class="uni-text-small uni-ellipsis text-gray">金额</text>
-											</view>
-											<view class="block-col">
-												<text class="uni-text">{{item.direction}}</text>
-												<text class="uni-text-small uni-ellipsis text-gray">流动方向</text>
-											</view>
-										</view>
-									</view>
-								</view>
-							</block>
-						</view>
+						<self-list :data="expenseLists"  :istrip="true"></self-list>
 						<uni-load-more :status="status" :content-text="contentText" @handload="getData()" />
 					</scroll-view>
 				</swiper-item>
@@ -77,11 +34,11 @@
 </template>
 
 <script>
+	import selfList from '@/components/self-list/self-list.vue'
 	import helper from '@/common/helper.js'
 	import {
 		CashFlowRpt
 	} from '@/common/report.js'
-	import MinCache from '@/common/storage.js'
 	import WucTab from '@/components/wuc-tab/wuc-tab.vue';
 	import {
 		obj2style
@@ -90,11 +47,14 @@
 	export default {
 		components: {
 			WucTab,
-			uniLoadMore
+			uniLoadMore,
+			selfList
 		},
 		data() {
 
 			return {
+				//列表属性
+				attrs:['金额','流动方向'],
 				//选项卡
 				tabList3: [{
 					name: '收入'
@@ -196,33 +156,7 @@
 </script>
 
 <style scoped>
-	/* 品型结构的底  */
-	.block-list-cell {
-		display: block;
-		width: 100%;
-		margin: 4% 0%;
-	}
-	/* 品型结构第一行 第一个口 */
-	.block-first-line {
-		width: 90%;
-		padding: 0% 0% 3% 5%;
-		margin-right: 5%;
-	}
-	/* 品型结构第二行的两个口 */
-	.block-second-line {
-		display: flex;
-		justify-content: space-between;
-		width: 90%;
-		padding-left: 5%;
-	}
-
-    /* 左右两个口 */
-	.block-col {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-
+	
 	div,
 	scroll-view,
 	swiper {
@@ -294,17 +228,5 @@
 		text-align: center;
 	}
 
-	.uni-list-cell::after {
-		position: absolute;
-		z-index: 3;
-		right: 0;
-		bottom: 0;
-		left: 30upx;
-		right: 30upx;
-		height: 1px;
-		content: '';
-		-webkit-transform: scaleY(1);
-		transform: scaleY(1);
-		background-color: #c8c7cc;
-	}
+	
 </style>

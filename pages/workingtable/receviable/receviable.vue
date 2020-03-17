@@ -1,55 +1,20 @@
 <template>
 	<view>
-		
-	
-		<view class="headline"><text class="cuIcon-titles text-orange"></text>应收账款明细</view>
-		
-		<!-- 下拉列表 -->
-		<uni-collapse>
-		<view v-for="(item, index) in list" :key="index" >
-			<uni-collapse-item :show-animation="true"   :title='item[1].accountName' :begin="item[1].totalAmount|priceFormat(2,'￥',true)">
-				<view v-for="(oitem,oindex) in item[1].intervalAmount" :key="oindex" >
-					<view class="uni-collapse-cell__title" @click="getDetail(oitem)">
-						<view class="uni-collapse-cell__title-inner">
-							<view class="uni-collapse-cell__title-text row">
-								<view class="col1">{{oitem.itemName}}</view>
-								<view class="col1">
-									<view class="text-gray">借方余额 :<text class="td">{{ oitem.totalAmount|priceFormat(2,'￥',true)}}</text></view>
-								</view>
-							</view>
-						</view>
-					</view>
-				
-							
-				</view>
-				
-			
-			    
-			</uni-collapse-item>
-		</view>
-		
-			
-		</uni-collapse>
-		
-		
-		
-</view>
+		<self-collapse :data="list" @click="getDetail"></self-collapse>
+	</view>
 
 </template>
 
 <script>
 	import {AgeAnalysisRpt} from '@/common/report.js'
-	import uniCollapse from '@/components/uni-collapse/uni-collapse.vue'
-	import uniCollapseItem from '@/components/uni-collapse-item-1/uni-collapse-item.vue'
+	import selfCollapse from '@/components/self-collapse/self-collapse'
+	
 	import helper from '@/common/helper.js'
 	import MinCache from '@/common/storage.js'
 	
 	export default {
 		components: {
-			uniCollapse,
-			uniCollapseItem,
-		
-			
+			selfCollapse,
 		},
 		data() {
 			return {
@@ -89,7 +54,7 @@
 								uni.navigateBack({
 								    delta: 1
 								});
-								uni.hideLoading();
+								uni.hideLoading(); 
 					        }
 					    }
 					});
@@ -99,26 +64,16 @@
 			getDetail(e,time){
 				//将需要展示的账龄数据存到aatemp 的缓存中
 				console.log(e)
-				if(e.totalAmount!=0){
-					uni.setStorageSync('aatemp',e);
+				if(e.status){
+					uni.setStorageSync('aatemp',e.data);
 					let detail = {
 						age:time
 					};
 					uni.navigateTo({
 						url:'./detailList/detailList?detail=' + encodeURIComponent(JSON.stringify(detail))
 					});
-				}else{
-					//console.log('暂无该项应收款')
-					uni.showModal({
-					    title: '提示',
-					    content: '暂无该项应收款',
-						showCancel:false,
-						confirmText:'知道了',
-					    success: function (res) {
-					       console.log(res)
-					    }
-					});
 				}
+				
 				
 			}
 		}
