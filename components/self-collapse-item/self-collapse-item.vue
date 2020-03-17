@@ -22,6 +22,7 @@
 <script>
 
 export default {
+	name:'selfCollapseItem',
 	data() {
 		return {};
 	},

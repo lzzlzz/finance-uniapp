@@ -50,11 +50,13 @@ export default{
 		//sp应付账龄
 		payable:{
 			list:[],
-			loading:false
+			loading:false,
+			detail:{}
 		},
 		receviable:{
 			list:[],
-			loading:false
+			loading:false,
+			detail:{}
 		}
 		
 		
@@ -98,7 +100,13 @@ export default{
 		},
 		setReceviableList(state,data){
 			state.receviable.list = [...data]
-		}
+		},
+		setPayableDetail(state,data){
+			state.payable.detail = data
+		},
+		setReceviableDetail(state,data){
+			state.receviable.detail = data
+		},
 		
 		
 	},
@@ -130,6 +138,7 @@ export default{
 		},
 		//获取账龄数据，根据type类型的不同获取不同报表的数据
 		getAgeAnalysisRpt({state,commit,rootState,rootGetters},type){
+			helper.showLoading()
 			let mutationType = (type==='cs')?'setReceviableList':'setPayableList'
 			let reportObj = (type==='cs')?csAgeAnalysisRpt:spAgeAnalysisRpt;
 			reportObj.period = helper.getdate()//应收应付是用当前时间
@@ -137,6 +146,7 @@ export default{
 			reportObj.getReportData().then(res=>{
 				console.log(res)
 				commit(mutationType,res)
+				uni.hideLoading();
 				
 			}).catch((err)=>{//如果请求失败就让用户手动请求
 					uni.showModal({

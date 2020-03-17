@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="headline"><text class="cuIcon-titles text-orange"></text>应收账款明细</view>
+		<view class="headline"><text class="cuIcon-titles text-orange"></text>{{title}}</view>
 		
 		<!-- 下拉列表 -->
 		<uni-collapse>
@@ -12,8 +12,8 @@
 								<view class="uni-collapse-cell__title-text row">
 									<view class="col1">{{oitem.itemName}}</view>
 									<view class="col1">
-										<view class="text-gray">借方余额 :<text class="td">{{ oitem.totalAmount|priceFormat(2,'￥',true)}}</text></view>
-									</view>
+										<view class="text-gray">{{direction}}余额 :<text class="td">{{ oitem.totalAmount|priceFormat(2,'￥',true)}}</text></view>
+									</view> 
 								</view>
 							</view>
 						</view>
@@ -29,6 +29,7 @@
 	import uniCollapse from '@/components/uni-collapse/uni-collapse.vue'
 	import uniCollapseItem from '@/components/uni-collapse-item-1/uni-collapse-item.vue'
 	export default {
+		name:'selfCollapse',
 		components: {
 			uniCollapse,
 			uniCollapseItem,
@@ -38,7 +39,7 @@
 				
 			};
 		},
-		props:['data'],
+		props:['data','title','direction'],
 		methods:{
 			goDetail(oitem){
 				let payload = {
@@ -48,7 +49,7 @@
 				if(oitem.totalAmount == 0){
 					uni.showModal({
 					    title: '提示',
-					    content: '暂无该项应收款',
+					    content: '该项暂无发生额',
 						showCancel:false,
 						confirmText:'知道了',
 					    success: function (res) {
