@@ -7,7 +7,7 @@
 			<swiper-item>
 				<scroll-view scroll-y='true' style="height: 100%;" @scrolltolower="$emit('loadData')">
 					<!-- 多行列表 -->
-					<self-list :data="incomeLists" :istrip="true" :attrs='attrs'></self-list>
+					<self-list :data="leftList" :istrip="true" :attrs='attrs'></self-list>
 					<uni-load-more :status="status" :content-text="contentText" @handload="$emit('loadData')" />
 				</scroll-view>
 			</swiper-item>
@@ -16,7 +16,7 @@
 					
 					<!-- 多行列表 -->
 
-					<self-list :data="expenseLists"  :istrip="true"></self-list>
+					<self-list :data="rightList"  :istrip="true"></self-list>
 					<uni-load-more :status="status" :content-text="contentText" @handload="$emit('loadData')" />
 				</scroll-view>
 			</swiper-item>
@@ -58,7 +58,7 @@
 				
 			};
 		},
-		props:['status','incomeList','expenseList'],
+		props:['status','leftList','rightList'],
 		methods:{
 			//选项卡
 			swiperChange3(e) {

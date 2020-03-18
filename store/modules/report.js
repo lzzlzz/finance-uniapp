@@ -1,16 +1,22 @@
 //报表对应的状态
 import helper from '@/common/helper.js'
 import constants from '@/common/constants.js'
-import { BalanceRpt, AgeAnalysisRpt} from '@/common/report.js'
+import { BalanceRpt, AgeAnalysisRpt,CashFlowRpt } from '@/common/report.js'
 //科目余额表对象
 const balanceRpt = new BalanceRpt()
 balanceRpt.reportName = 'GL_BalanceSumRpt'
 //应收账龄对象
-const  csAgeAnalysisRpt = new AgeAnalysisRpt();
-csAgeAnalysisRpt.reportName = 'GL_CustomerAgeAnalysisSumRpt';
+const  csAgeAnalysisRpt = new AgeAnalysisRpt()
+csAgeAnalysisRpt.reportName = 'GL_CustomerAgeAnalysisSumRpt'
 //应付账龄对象
 const  spAgeAnalysisRpt = new AgeAnalysisRpt();
-spAgeAnalysisRpt.reportName = 'GL_SupplierAgeAnalysisSumRpt';
+spAgeAnalysisRpt.reportName = 'GL_SupplierAgeAnalysisSumRpt'
+//现金流水对象
+const cashFlowRpt = new CashFlowRpt()
+cashFlowRpt.reportName = 'GL_CashFlowDetailRpt'
+//现金流量对象
+const cashFlowSumRpt = new CashFlowRpt()
+cashFlowSumRpt.reportName = 'GL_CashFlowSumRpt'
 
 
 export default{
@@ -57,6 +63,17 @@ export default{
 			list:[],
 			loading:false,
 			detail:{}
+		},
+		//现金流水、流量
+		cashFlow:{
+			incomeList:[],
+			expenseList:[],
+			status:'more'
+		},
+		cashFlowSum:{
+			incomeList:[],
+			expenseList:[],
+			status:'more'
 		}
 		
 		
@@ -107,6 +124,24 @@ export default{
 		setReceviableDetail(state,data){
 			state.receviable.detail = data
 		},
+		setCashFlowList(state,odata){
+			let data = odata.get('value');
+			state.cashFlow.incomeList = state.cashFlow.incomeList.concat(data.filter((obj) => obj.direction == '流入'));
+			state.cashFlow.expenseList = state.cashFlow.expenseList.concat(data.filter((obj) => obj.direction == '流出'));
+			state.cashFlow.status = odata.get('done') ? 'noMore' : 'more';
+		},
+		setCashFlowSumList(state,odata){
+			let data = odata.get('value');
+			state.cashFlowSum.incomeList = state.cashFlowSum.incomeList.concat(data.filter((obj) => obj.direction == '流入'));
+			state.cashFlowSum.expenseList = state.cashFlowSum.expenseList.concat(data.filter((obj) => obj.direction == '流出'));
+			state.cashFlowSum.status = odata.get('done') ? 'noMore' : 'more';
+		},
+		initCashFlowList(state,type){
+			let stateObj = (type==='sum')?state.cashFlowSum:state.cashFlow;
+			stateObj.incomeList = []
+			stateObj.expenseList = []
+			stateObj.status = 'more'
+		}
 		
 		
 	},
@@ -137,7 +172,7 @@ export default{
 			
 		},
 		//获取账龄数据，根据type类型的不同获取不同报表的数据
-		getAgeAnalysisRpt({state,commit,rootState,rootGetters},type){
+		getAgeAnalysisRpt({state,commit},type){
 			helper.showLoading()
 			let mutationType = (type==='cs')?'setReceviableList':'setPayableList'
 			let reportObj = (type==='cs')?csAgeAnalysisRpt:spAgeAnalysisRpt;
@@ -162,12 +197,21 @@ export default{
 								uni.hideLoading(); 
 					        }
 					    }
-					});
-					
-				})
-			
-			
-			
+					});	
+				})	
+		},
+		//获取现金流水流量数据
+		getCashFlowRpt({ state,commit,rootState,rootGetters }, type){
+			helper.showLoading()
+			let mutationType = (type==='sum')?'setCashFlowSumList':'setCashFlowList';
+			let reportObj = (type==='sum')?cashFlowSumRpt:cashFlowRpt;
+			reportObj.period = rootGetters["global/periodGetter"]
+			reportObj.param.pageIndex = 1
+			reportObj.getReportData().then(res=>{
+				console.log(res)
+				commit(mutationType,res)
+				uni.hideLoading();
+			})
 		}
 		
 		
