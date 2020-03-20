@@ -539,7 +539,7 @@ export default {
 	width: 100%;
 	box-sizing: border-box;
 	font-size: 26rpx;
-	background: #d9c298;
+	background-image: linear-gradient(to top, $uni-bg-color-start ,$uni-bg-color-end);
 	transition: all 0.3s;
 
 	.uni-calenda__content {

@@ -25,10 +25,10 @@
 							v-model="loginInfo.password" name="password" />
 						<uni-icons :type="showPassword?'eye':'eye-slash'" @click="showPassword=!showPassword"></uni-icons>
 					</view>
-					<view class="login-help">
+					<!-- <view class="login-help">
 						<uni-icons type="help"></uni-icons>
 						<text class="uni-link">忘记密码</text>
-					</view>
+					</view> -->
 					
 						<button class="login-btn" id='3'   form-type="submit">登录</button>
 						<button class="login-btn entry-btn" id='4' form-type="reset">游客入口</button>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-	import {mapActions,mapState} from 'vuex'
+	import {mapActions,mapState,mapMutations} from 'vuex'
 	export default{
 		data(){
 			return{
@@ -59,6 +59,7 @@
 			isLog:state=>state.login.isLog
 		}),
 		methods:{
+			...mapMutations('login',['setUserAccess']),
 			...mapActions('login',['login']),
 			async Login({mp,detail}){
 				let loginInfo = {
@@ -67,13 +68,16 @@
 						password:'test-user'
 					}
 				if(mp.type==='submit'){
-					//如果是登录按钮进入的，就用表单中的信息
+					//如果是登录按钮进入的说明是用户，就用表单中的信息
 					loginInfo= detail.value
 				}
 				if(this.validCheck(loginInfo)){
 					//如果验证成功就发送登录请求
 					let res = await this.login(loginInfo)
 					if(res){
+						if(mp.type==='submit'){
+							this.setUserAccess()
+						}
 						uni.switchTab({
 							url:'../workingtable/details/details'
 						})
@@ -116,7 +120,8 @@
 	
 	.login{
 		height: 100%;
-		background-image: url(/static/images/l-img/login.jpg);
+		// background-image: url(/static/images/l-img/login.jpg);
+		background-image: linear-gradient(to top,$uni-bg-color-start,#fff);
 		
 		.login-container{
 			height: 100%;
@@ -136,9 +141,16 @@
 					display: flex;
 					justify-content: space-around;
 					align-items: center;
-					padding: 6rpx 20rpx;
-					>input{
+					padding: 6rpx 80rpx;
+					.uni-input{
 						margin: 0 20rpx;
+						height: 50upx;
+						padding: 15upx 25upx;
+						line-height:50upx;
+						font-size:28upx;
+						background-color: transparent;
+						border-bottom: 2rpx solid white;
+						flex: 1;
 					}
 				}
 				.login-help{
@@ -148,8 +160,10 @@
 					
 				}
 				.login-btn{
+					background-color: #f1f1f1;
 					margin: 100rpx 70rpx 6rpx 70rpx;
 					border-radius: $uni-border-radius-lg;
+					
 				}
 				.entry-btn{
 					margin-top: 10rpx;

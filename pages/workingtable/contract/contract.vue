@@ -107,7 +107,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 
 
@@ -131,17 +131,16 @@ export default {
 	flex-direction: row;
 	justify-content: space-between;
 }
-.headline {
-		background-color: #e7e7e7;
+	.headline {
+		background-image: linear-gradient(to bottom right, $uni-bg-color-start, $uni-bg-color-end);
 		height: 83rpx;
-		font-weight: bold;
 		padding-left: 10rpx;
-		font-weight: bold;
 		padding-left: 40rpx;
 		padding-top: 30rpx;
 		font-size: 1.3em;
-	}
-	.text-orange {
-		color: #c7a566;
+		color: white;
+		.text-orange {
+			color:#ffe390 ;
+		}
 	}
 </style>

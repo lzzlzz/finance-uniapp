@@ -15,7 +15,7 @@
 			<block v-for="(item,index) in tax.taxList" :key="index">
 				<view class="uni-list-cell uni-list-cell-pd">
 					<text class="uni-ellipsis" >{{item.taxName}}</text>
-					<text class="uni-h5">{{item.currency|priceFormat(2,'￥',true)}}</text>
+					<text class="uni-h5 uni-bold">{{item.currency|priceFormat(2,'￥',true)}}</text>
 				</view>
 			</block>
 		</view>

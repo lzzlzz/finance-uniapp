@@ -1,6 +1,8 @@
 <template>
 	<view>
-		<view  class="weui-switch" :class="{'weui-switch-on' : isChecked}" :value="value" :sid="sid" @tap.stop="toggle" :style="{color:bgcolor, width: width+'px'}">
+		<view  class="weui-switch" :class="{'weui-switch-on' : isChecked}" 
+		:value="value" :sid="sid" @tap.stop="toggle" 
+		:style="{color:bgcolor, width: width+'px'}">
 			<view v-if="isChecked && direction.length > 0" class="switch-checked" >
 				{{direction[0]}}
 			</view>
@@ -80,15 +82,15 @@
     }   
 </script>
 
-<style>
+<style lang="scss" scoped>
 	
 	.weui-switch {
 		position:relative;
         display: block;
         position: relative;
-        width: 152px;
-        height: 24px;
-		border: 1px solid #C0C0C0;
+        width: 154px;
+        height: 26px;
+		border: 2px solid #f8f8f8;
         outline: 0;
         border-radius: 16px;
         box-sizing: border-box;
@@ -102,40 +104,41 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 50px;
+        width: 47px;
         height: 22px;
-        border-radius: 15px;
-        background-color: #d9c298;
+        border-radius: 16px;
+        background-color: $uni-bg-color-end;
         transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
     }
-	
+	/* 按钮 */
     .weui-switch:after {
         content: " ";
         position: absolute;
         top: 0;
         left: 0;
-        width: 22px;
-        height: 22px;
-        border-radius: 15px;
-        background-color: #d9c298;
+        width: 18px;
+        height: 18px;
+        border-radius: 16px;
+        background-color: #FFF;
+		border: 2px solid $uni-bg-color-start ;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
         transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
     }
 	
     .weui-switch-on {
-		border-color: #353535;
-        background-color: #1AAD19;
+		border-color: #f0f0f0;
+        background-color: $uni-bg-color-end;
     }
 	
 	/* 背景颜色设计 */
     .weui-switch-on:before {
-        border-color: #353535;
-		background-color: #09BB07;
+        border-color: #f0f0f0;
+		background-color: $uni-bg-color-end;
     }
 	
     .weui-switch-on:after {
-		border-color: #fcc038;
-        transform: translateX(66rpx);
+		border-color: $uni-bg-color-start;
+        transform: translateX(50rpx);
     }
 	
 	.switch-checked {
@@ -155,7 +158,7 @@
 		padding:0 5px;
 		right:2px;
 		line-height:22px;
-		color:#7A7A7A;
+		color:#FFF;
 		text-align:right;
 		user-select:none;
 	}

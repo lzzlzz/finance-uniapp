@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.page.data-v-33b39e86 {
+.page.data-v-5368ec76 {
   position: fixed;
   z-index: 6;
   color: #fff;
@@ -32,7 +32,7 @@
   text-align: center;
   width: 100%;
 }
-.mask.data-v-33b39e86 {
+.mask.data-v-5368ec76 {
   position: fixed;
   top: 0;
   left: 0;
@@ -50,18 +50,18 @@
   background-color: #000;
   z-index: 5;
 }
-.mask > .my_swiper.data-v-33b39e86 {
+.mask > .my_swiper.data-v-5368ec76 {
     width: 100%;
     height: 100%;
 }
-.mask > .my_swiper .bg_img.data-v-33b39e86 {
+.mask > .my_swiper .bg_img.data-v-5368ec76 {
       background-size: 100% auto;
       background-repeat: no-repeat;
       background-position: center;
       width: 100%;
       height: 100%;
 }
-.pic_list.data-v-33b39e86 {
+.pic_list.data-v-5368ec76 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -70,14 +70,14 @@
   -webkit-flex-flow: row wrap;
           flex-flow: row wrap;
 }
-.pic_list > view.data-v-33b39e86 {
+.pic_list > view.data-v-5368ec76 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 33.3vw;
             flex: 0 0 33.3vw;
     height: 33.3vw;
     padding: 1vw;
 }
-.pic_list > view > image.data-v-33b39e86 {
+.pic_list > view > image.data-v-5368ec76 {
       width: 100%;
       height: 100%;
 }

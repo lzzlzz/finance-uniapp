@@ -4,7 +4,7 @@
     "uni-grid": "/components/uni-grid/uni-grid",
     "uni-grid-item": "/components/uni-grid-item/uni-grid-item",
     "uni-calendar": "/components/uni-calendar-1/uni-calendar",
-    "uni-steps": "/components/uni-steps-1/uni-steps",
-    "switchc": "/components/zz-switchc/zz-switchc"
+    "switchc": "/components/zz-switchc/zz-switchc",
+    "account-item": "/components/self-account-item/self-account-item"
   }
 }

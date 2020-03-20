@@ -4,7 +4,7 @@
 		
 		<!-- 下拉列表 -->
 		<uni-collapse>
-			<view v-for="(item, index) in data" :key="index" >
+			<view v-for="(item, index) in listData" :key="index" >
 				<uni-collapse-item :show-animation="true"   :title='item[1].accountName' :begin="item[1].totalAmount|priceFormat(2,'￥',true)">
 					<view v-for="(oitem,oindex) in item[1].intervalAmount" :key="oindex" >
 						<view class="uni-collapse-cell__title" @click="goDetail(oitem)">
@@ -39,7 +39,7 @@
 				
 			};
 		},
-		props:['data','title','direction'],
+		props:['listData','title','direction'],
 		methods:{
 			goDetail(oitem){
 				let payload = {
@@ -64,7 +64,7 @@
 	}
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 	.box {
 	  display: flex;
 	  flex-wrap: wrap;
@@ -86,14 +86,16 @@
 	
 	.item {display: flex;flex-direction: column; margin: 15rpx auto;}
 	.headline {
-		background-color: #e7e7e7;
+		background-image: linear-gradient(to bottom right, $uni-bg-color-start, $uni-bg-color-end);
 		height: 83rpx;
-		font-weight: bold;
 		padding-left: 10rpx;
-		font-weight: bold;
 		padding-left: 40rpx;
 		padding-top: 30rpx;
 		font-size: 1.3em;
+		color: white;
+		.text-orange {
+			color:#ffe390 ;
+		}
 	}
 	.row1 {
 		display: flex;
@@ -110,10 +112,8 @@
 	.td{
 		color: #000000;
 	}
-	.text-orange {
-		color: #c7a566;
-	}
-	.my-card {padding: 10rpx 10rpx;background-color:#fad795; color:#8b562a; border-radius:25rpx;}
+	
+	
 	.uni-collapse-cell__title-inner {
 		flex: 1;
 		overflow: hidden;
@@ -134,7 +134,7 @@
 	}
 	.col1{
 		font-size: 1.2em;
-		color: #000000;
+		color: black;
 		height:90rpx;
 		line-height: 90rpx;
 	}

@@ -1,5 +1,5 @@
 // app全局的状态
-export default{
+export default{ 
 	namespaced:true,
 	state:{
 		day:'',

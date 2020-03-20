@@ -5,6 +5,8 @@ const mc = new MinCache()
 export default {
 	namespaced:true,
 	state: {
+		//登录的身份,默认是访客
+		isUser:false,
 		//是否强制登录
 		forcedLogin:true,
 	    //是否登录
@@ -29,7 +31,14 @@ export default {
 		logout(state){
 			state.isLog = false
 			mc.clear()//直接清除所有缓存
+			uni.reLaunch({
+			    url:'login'
+			});
+		},
+		setUserAccess(state){
+			state.isUser = true
 		}
+		
 	},
 	actions:{
 		async login({commit,state},userInfo){
@@ -75,6 +84,30 @@ export default {
 					throw e
 				}
 			})
+		},
+		async resetpwd({commit,state},pwd){
+			let url_config = config.get('url_config');
+			let [err,res] = await uni.request({
+				url:url_config + "/users",
+				method: 'PUT',
+				header: {
+					'content-type': 'application/json;charset=UTF-8' 
+				},
+				data:{
+					"id": state.userInfo.id,
+					"password": pwd
+				}
+			})
+			if(err!==null)  {
+				console.log(err)
+				return false
+			}
+			if(res.data.success){
+				console.log(res)
+				//如果修改成功，就设置为未登录，让其重新登录
+				commit('setLogState',false)
+				return true
+			}
 		}
 	}
 }

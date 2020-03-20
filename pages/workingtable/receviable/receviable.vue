@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<self-collapse :data="receviable.list" 
+		<self-collapse :listData="receviable.list" 
 						title="应收账款明细" direction="借方" @click="getDetail">
 		</self-collapse>
 	</view>

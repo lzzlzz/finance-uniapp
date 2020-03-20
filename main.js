@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import store from './store' 
 import priceFormat from '@/common/priceformat.js'
-import uniIcons from '@/components/uni-icons/icons'
+import uniIcons from '@/components/uni-icons/uni-icons'
 import uniCalendar from "@/components/uni-calendar-1/uni-calendar"
 import MinCache from '@/common/storage.js'
 //挂载全局对象

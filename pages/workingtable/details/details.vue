@@ -12,11 +12,11 @@
 
 		<!-- 方格导航区域 -->
 		<view class="the-grid">
-			<uni-grid :column="3" :show-border="true" :square="true" @change="goservice">
-				<view v-for="(item,index) in data2" :key="index">
+			<uni-grid :column="3" :show-border="false" :square="true" @change="goservice">
+				<view v-for="(item) in data2"  >
 					<uni-grid-item>
 						<view class="uni-grid-item__box-image">
-							<image :src="item.image" class="grid-image" />
+							<view  :class="item.image" />
 						</view>
 						<text >{{item.text}}</text>
 					</uni-grid-item>
@@ -45,50 +45,50 @@
 			return {
 				//格子布局
 				data2: [{
-						image: '/static/images/w-img/c14.png',
+						image: 'icon icon-cashflow',
 						text: '现金流水'
 					},
 					{
-						image: '/static/images/w-img/c4.png',
+						image: 'icon icon-cashflow-sum',
 						text: '现金流量'
 					},
-
 					{
-						image: '/static/images/w-img/c11.png',
-						text: '应收账款'
-					},
-					{
-						image: '/static/images/w-img/c7.png',
-						text: '应付账款'
-					},
-					{
-						image: '/static/images/w-img/c5.png',
+						image: 'icon icon-budget',
 						text: '资产及负债'
 					},
 					{
-						image: '/static/images/w-img/c6.png',
+						image: 'icon icon-payable',
+						text: '应付账款'
+					},
+					{
+						image: 'icon icon-receviable',
+						text: '应收账款'
+					},
+					
+					{
+						image: 'icon icon-profit',
 						text: '利润表'
 					},
 					{
-						image: '/static/images/w-img/c12.png',
+						image: 'icon icon-tax',
 						text: '纳税表'
 					},
 
 					// {
-					// 	image: '/static/images/w-img/c8.png',
+					// 	image: 'icon icon-',
 					// 	text: '预算管理表'
 					// },
 					{
-						image: '/static/images/w-img/c9.png',
+						image: 'icon icon-contract',
 						text: '合同归档表'
 					}
 					// ,
 					// {
-					// 	image: '/static/images/w-img/c10.png',
+					// 	image: 'icon icon-g',
 					// 	text: '财务分析'
 					// },
 					// {
-					// 	image: '/static/images/w-img/c15.png',
+					// 	image: 'icon icon-g',
 					// 	text: '自定义报表'
 					// }
 				],
@@ -130,13 +130,13 @@
 						target = "../cash_flow_statement/cash_flow_statement";
 						break;	
 					case 2:
-						target = "../receviable/receviable";
+						target = "../budget/budget";
 						break;
 					case 3:
 						target = "../payable/payable";
 						break;
 					case 4:
-						target = "../budget/budget";
+						target = "../receviable/receviable";
 						break;
 					case 5:
 						target = "../profit/profit";
@@ -165,28 +165,26 @@
 </script>
 
 <style lang="scss" scoped>
+	@import  url('../../../common/css/my/icon.css');
 	.panel{
+		
 		width: 100%;
 		height: 350rpx;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		flex-wrap: wrap;
-		background-color: #c6ac80; 
-		margin-bottom: 10rpx;
+		background-image: linear-gradient(to bottom right, $uni-bg-color-start, $uni-bg-color-end); 
+		
 		.panel-item{
-			width: 50%;
+			width: 50%; 
 		}
 		.panel-switch{
 			width: 50%;
 			display: flex;
 			justify-content: center;
-		}
-		
-		
+		}	
 	}
-
-
 	.the-grid {
 		margin-top: 1rpx;
 		background-color: #FFFFFF;
@@ -198,6 +196,35 @@
 		width: 90rpx;
 		height: 90rpx;
 	}
+	
+	
+	
+	.icon-cashflow{
+		background-position: 0.323% 0.683% ; 
+	}
+	.icon-cashflow-sum{
+		background-position: 0.346% 17.527% ; 
+	}
+	.icon-receviable{
+		background-position: 52.773% 100% ; 
+	}
+	.icon-payable{
+		background-position: 76.974% 52.599% ; 
+	}
+	.icon-budget{
+		background-position: 77.942% 17.26% ; 
+	}
+	.icon-profit{
+		background-position: 77.945% 0 ; 
+	}
+	.icon-tax{
+		background-position: 98.878% 52.576% ; 
+	}
+	.icon-contract{
+		background-position: 99.721% 35.103% ; 
+	}
+	
+	
 
 	
 </style>

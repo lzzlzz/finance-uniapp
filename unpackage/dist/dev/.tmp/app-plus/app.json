@@ -21,17 +21,17 @@
     "pages/my/index",
     "pages/my/login",
     "pages/my/feedback",
-    "pages/my/recommand"
+    "pages/my/resetpassword"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "finance-uniapp",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#fe875f"
   },
   "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
+    "color": "#ededed",
+    "selectedColor": "#fd8565",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
@@ -43,14 +43,14 @@
       },
       {
         "pagePath": "pages/workingtable/details/details",
-        "iconPath": "static/images/workingtable.png",
-        "selectedIconPath": "static/images/workingtable_select.png",
+        "iconPath": "static/images/worktable.png",
+        "selectedIconPath": "static/images/worktable_select.png",
         "text": "工作台"
       },
       {
         "pagePath": "pages/my/index",
         "iconPath": "static/images/my.png",
-        "selectedIconPath": "static/images/my.png",
+        "selectedIconPath": "static/images/my_select.png",
         "text": "我的"
       }
     ]
@@ -65,8 +65,9 @@
     "autoclose": false
   },
   "appname": "慧界智能财税",
-  "compilerVersion": "2.6.1",
+  "compilerVersion": "2.6.5",
   "usingComponents": {
+    "uni-icons": "/components/uni-icons/uni-icons",
     "uni-calendar": "/components/uni-calendar-1/uni-calendar"
   }
 }

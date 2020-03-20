@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<self-collapse-item :data="receviable.detail.items"></self-collapse-item>
+		<self-collapse-item :listData="receviable.detail.items"></self-collapse-item>
 	</view>
 </template>
 

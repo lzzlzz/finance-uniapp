@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<self-collapse-item :data="payable.detail.items"></self-collapse-item>
+		<self-collapse-item :listData="payable.detail.items"></self-collapse-item>
 	</view>
 </template>
 

@@ -4,10 +4,13 @@
 		<view class="example-user">
 			
 			<view  class="example-title">
-				<image src="/static/images/l-img/logo.jpg"></image>
+				
+				<view class="avator">
+					<image src="/static/images/l-img/avator.png" mode="aspectFit"></image>
+				</view>
 				<text v-if="isLog">您好,{{userInfo.name}} </text>
 				<text v-else>您好，请登录</text>
-				</view>
+			</view>
 		</view>
 		
 		<!-- 列表区域 -->
@@ -15,7 +18,7 @@
 			<self-title Chinese="智能服务" English="Service"></self-title>
 			<uni-list>	
 				<uni-list-item title="客服电话" thumb="/static/images/l-img/phone.png" showArrow="false" @click.native='phoneCall'></uni-list-item>
-				<uni-list-item title="修改密码" thumb="/static/images/l-img/gift.png" @click.native="recommandPage"></uni-list-item>
+				<uni-list-item v-if="isUser" title="修改密码" thumb="/static/images/l-img/gift.png" @click.native="recommandPage"></uni-list-item>
 			</uni-list>		
 			<self-title Chinese="其他" English="Items"></self-title>
 			<uni-list>
@@ -42,7 +45,7 @@
 	import uniListItem from '@/components/l-components/uni-list-item/uni-list-item.vue'
 	
 	export default {
-		computed: mapState('login',['userInfo','isLog']),
+		computed: mapState('login',['userInfo','isLog','isUser']),
 		components: {uniList,uniListItem, selfTitle},
         onLoad() {
             if (!this.isLog) {
@@ -137,16 +140,19 @@
 			flex-direction: column;
 			justify-content: flex-end;
 			.example-title{
+				display: flex;
 				background-color: #FFFFFF;
 				height: 120rpx;
 				margin-bottom: 50rpx;
-				>image{
-					width: 150rpx;
-					height: 150rpx;
-					margin: -75rpx 40rpx 0 40rpx;
+				.avator{
+					 margin: -75rpx 40rpx 0 40rpx;
+					>image{
+						width: 150rpx; 
+						height: 150rpx;
+					}
 				}
 				>text{
-					
+					align-self: center;
 				}
 			}
 		}
@@ -177,4 +183,5 @@
 	.fontsize{
 		font-size: 32upx;
 	}
+	
 </style>

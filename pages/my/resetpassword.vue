@@ -1,20 +1,24 @@
 <template>
-	<view class="body">
-		<input type="text" v-model="oldpassword"
-		class="uni-input common-input" 
-		placeholder="输入旧密码" />
+	
+	<view class="resetpwd-container">
+		<form @submit="confirm">
 			
-		<input type="text" v-model="newpassword"
-		class="uni-input common-input" 
-		placeholder="输入新密码" />
+			<view  class="login-input">
+				<text>新密码：</text>
+				<input class="uni-input" :password="true" placeholder="输入新密码"
+					 name="password" />
+				
+			</view>
+			<view  class="login-input">
+				<text>确认密码：</text>
+				<input class="uni-input" :password="true" placeholder="输入确认密码"
+					 name="refirmpwd" />
+				
+			</view>
 			
-		<input type="text" v-model="renewpassword"
-		class="uni-input common-input" 
-		placeholder="输入确认密码" />
-			
-		<button class="user-set-btn" 
-		:loading="loading" :class="{'user-set-btn-disable':disabled}" 
-		type="primary" @tap="submit" :disabled="disabled">完成</button>	
+			<button class="btn" form-type="submit" >确认修改</button>	
+		</form>
+		
 	</view>		
 
 	
@@ -22,99 +26,102 @@
 </template>
 
 <script>
-	import config from '@/common/config.js'
-	export default {
-		data() {
-			return {
-				//hasPassword:false,
-				oldpassword:"",
-				newpassword:"",
-				renewpassword:"",
-				disabled:true,
-				loading:false
+	import {mapActions,mapMutations} from 'vuex'
+	export default{
+		data(){
+			return{
+				
 			}
 		},
-		onLoad(e) {
-			this.hasPassword = !!(e.password && e.password !== "false");
-		},
-		watch:{
-			oldpassword(val){
-				this.change();
+		methods:{
+			
+			...mapActions('login',['resetpwd','logout']),
+			async confirm({detail:{value:{password,refirmpwd}}}){
+				console.log(password,refirmpwd)
+				let res = this.checkpwd(password,refirmpwd)
+				if(res.status){
+					let resetRes = await this.resetpwd(password)
+					if(resetRes){
+						uni.showModal({
+							content:'密码修改成功，请重新登录',
+							showCancel:false,
+							success:res=>{
+								if(res.confirm){
+									this.logout()
+									
+								}
+							}
+						})
+						
+					}else{
+						uni.showModal({
+							content:'密码修改失败',
+							showCancel:false
+						})
+					}
+				}else{
+					uni.showModal({
+						title:'信息填写有误',
+						content:res.msg,
+						showCancel:false
+					})
+					return false
+				}
+				
 			},
-			newpassword(val){
-				this.change();
-			},
-			renewpassword(val){
-				this.change();
+			checkpwd(pwd,refirmpwd){
+				pwd = pwd.trim()
+				refirmpwd = refirmpwd.trim()
+				if(pwd===refirmpwd && pwd.length !==0){
+					return {status:true,msg:'校验成功'}
+				}else if(pwd!==refirmpwd){
+					return {status:false,msg:'两次密码不一致'}
+				}else{
+					return {status:false,msg:'密码不能为空'}
+				}
 			}
-		},
-		methods: {
-			// 监听输入框
-			change(){
-				if(this.newpassword && this.renewpassword){
-					return this.disabled=false;
-				}
-				if (this.hasPassword && !this.oldpassword) {
-					return this.disabled = true;
-				}
-				this.disabled=true;
-			},
-			// 验证层
-			check(){
-				if(this.hasPassword && (!this.oldpassword || this.oldpassword=="")){
-					uni.showToast({ title: '旧密码不能为空', icon:"none" });
-					return false;
-				}
-				if(!this.newpassword || this.newpassword==""){
-					uni.showToast({ title: '新密码不能为空', icon:"none" });
-					return false;
-				}
-				if(!this.renewpassword || this.renewpassword==""){
-					uni.showToast({ title: '确认密码不能为空', icon:"none" });
-					return false;
-				}
-				if(this.newpassword !== this.renewpassword){
-					uni.showToast({ title: '确认密码和新密码不一致', icon:"none" });
-					return false;
-				}
-				return true;
-			},
-			// 提交
-			submit(){
-				let url_config = config.get('url_config');
-				uni.request({
-					url:url_config+'/users',
-					data:{
-						id:1,
-						username:this.username,
-						password:this.newpassword
-					},
-					method: 'PUT',
-					header: {
-						'content-type': 'application/json' 
-					},
-					success: (res) => {
-						console.log(res.data);
-						uni.showToast({
-							title:'密码修改成功！'
-						});
-						setTimeout(function(){
-							uni.navigateBack({delta:1})
-						},2000);
-						//console.log(this.data.userId);
-					},
-					fail: () => {
-						uni.showToast({
-							icon: 'none',
-							title: '网络异常,请稍后重试'
-						});					
-					},
-				});
-			},					
 		}
 	}
+	
 </script>
 
-<style>
+<style lang="scss" scoped>
 @import "../../common/myform.css";
+
+.resetpwd-container{
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(to top,$uni-bg-color-start,#fff);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	>form{
+		width: 80%;
+		.login-input{
+			
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			position: relative;
+			margin-bottom: 50rpx;
+			.uni-input{
+				position: absolute;
+				left:150rpx;
+				line-height:50upx;
+				font-size:28upx;
+				background-color: transparent;
+				border-bottom: 2rpx solid white;
+				flex: 1;
+			}
+		}
+		.btn{
+			margin-top: 100rpx;
+			border-radius: $uni-border-radius-lg;
+		}
+	}
+	
+	
+	
+}
 </style>

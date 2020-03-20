@@ -1,0 +1,1 @@
+<view class="data-v-143ebd3e"><view class="content data-v-143ebd3e"><text class="content-text data-v-143ebd3e">{{itemName+"（"+item.unit+"）"}}</text><text class="{{['content-text data-v-143ebd3e',(!item.isScale)?'pronum':'',(item.isScale)?'stdnum':'']}}">{{$root.f0}}</text></view></view>

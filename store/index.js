@@ -17,6 +17,5 @@ const store = new Vuex.Store({
 		report
 	}
 })
-// store.prototype.mc = new MinCache()
 
 export default store

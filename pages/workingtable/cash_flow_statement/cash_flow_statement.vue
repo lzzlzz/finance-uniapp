@@ -5,7 +5,7 @@
 
 		<!-- 选项卡 -->
 		<self-swiper :leftList="incomeList" :rightList="expenseList" :status="status"
-		 @loadData="getData"></self-swiper>
+		 @loadData="getData" leftActiveClass="text-red" rightActiveClass="text-green"></self-swiper>
 
 	</view>
 </template>
@@ -48,7 +48,7 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	
 	
 </style>

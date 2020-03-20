@@ -4,7 +4,8 @@
 		<uni-calendar :insert="true" @change="change" />
 
 		<!-- 选项卡 -->
-		<self-swiper :leftList="incomeList" :rightList="expenseList" :status="status"
+		<self-swiper :leftList="incomeList" :rightList="expenseList" 
+		 leftActiveClass="text-red" rightActiveClass="text-green" :status="status"
 		 @loadData="getData"></self-swiper>
 
 	</view>

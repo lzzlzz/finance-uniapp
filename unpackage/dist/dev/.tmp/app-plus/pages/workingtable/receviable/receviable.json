@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "应收账款",
   "usingComponents": {
-    "uni-collapse": "/components/uni-collapse/uni-collapse",
-    "uni-collapse-item": "/components/uni-collapse-item-1/uni-collapse-item"
+    "self-collapse": "/components/self-collapse/self-collapse"
   }
 }

@@ -10,14 +10,25 @@
 		    <swiper-item>
 			<scroll-view scroll-y='true'>
 			<!-- 多行列表 -->
-			<self-list :data="budget.asset" :trip="false"></self-list>
+			
+			<view class="uni-list">
+				<view v-for="(item,index) in budget.asset" :key="index" class="uni-list-cell uni-list-cell-pd " >
+					<text class="uni-ellipsis single-list-cell " style=" padding:8upx 0;">{{item.name}}</text>
+					<text class="uni-h5 uni-bold ">{{item.value|priceFormat(2,'￥',true)}}</text>		
+				</view>
+			</view>
 			</scroll-view>
 			</swiper-item>
 			<swiper-item>
 			<scroll-view scroll-y='true'>
 			
 			<!-- 多行列表 -->
-			<self-list :data="budget.budget" :trip="false"></self-list>
+			<view class="uni-list">
+				<view v-for="(item,index) in budget.asset" :key="index" class="uni-list-cell uni-list-cell-pd " >
+					<text class="uni-ellipsis single-list-cell " style=" padding:8upx 0;">{{item.name}}</text>
+					<text class="uni-h5 uni-bold ">{{item.value|priceFormat(2,'￥',true)}}</text>		
+				</view>
+			</view>
 			</scroll-view>
 			</swiper-item>
 			
@@ -29,13 +40,13 @@
 </template>
 
 <script>
-	import selfList from '@/components/self-list/self-list.vue'
+	
 	import WucTab from '@/components/wuc-tab/wuc-tab.vue'
 	import {mapState,mapActions} from 'vuex'
 	export default {
 		components:{
 			WucTab,
-			selfList
+			
 		},
 		data() {
 			return {
@@ -95,5 +106,17 @@
 	scroll-view {
 		height: 100%;
 	}
-
+	.uni-list-cell::after {
+		position: absolute;
+		z-index: 3;
+		right: 0;
+		bottom: 0;
+		left: 30upx;
+		right: 30upx;
+		height: 1px;
+		content: '';
+		-webkit-transform: scaleY(1);
+		transform: scaleY(1);
+		background-color: #c8c7cc;
+	}
 </style>

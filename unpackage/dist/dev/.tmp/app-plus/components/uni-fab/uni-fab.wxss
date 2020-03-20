@@ -1,5 +1,5 @@
 
-.fab-box.data-v-df1596b4 {
+.fab-box.data-v-74f5f9cd {
 	position: fixed;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -12,7 +12,7 @@
 	        align-items: center;
 	z-index: 2;
 }
-.fab-box.top.data-v-df1596b4 {
+.fab-box.top.data-v-74f5f9cd {
 	width: 60rpx;
 	height: 60rpx;
 	right: 30rpx;
@@ -25,31 +25,31 @@
 	transition: all 0.3;
 	opacity: 0;
 }
-.fab-box.active.data-v-df1596b4 {
+.fab-box.active.data-v-74f5f9cd {
 	opacity: 1;
 }
-.fab-box.fab.data-v-df1596b4 {
+.fab-box.fab.data-v-74f5f9cd {
 	z-index: 10;
 }
-.fab-box.fab.leftBottom.data-v-df1596b4 {
+.fab-box.fab.leftBottom.data-v-74f5f9cd {
 	left: 30rpx;
 	bottom: 60rpx;
 }
-.fab-box.fab.leftTop.data-v-df1596b4 {
+.fab-box.fab.leftTop.data-v-74f5f9cd {
 	left: 30rpx;
 	top: 80rpx;
 	
 }
-.fab-box.fab.rightBottom.data-v-df1596b4 {
+.fab-box.fab.rightBottom.data-v-74f5f9cd {
 	right: 30rpx;
 	bottom: 60rpx;
 }
-.fab-box.fab.rightTop.data-v-df1596b4 {
+.fab-box.fab.rightTop.data-v-74f5f9cd {
 	right: 30rpx;
 	top: 80rpx;
 	
 }
-.fab-circle.data-v-df1596b4 {
+.fab-circle.data-v-74f5f9cd {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -68,29 +68,29 @@
 	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
 	z-index: 11;
 }
-.fab-circle.left.data-v-df1596b4 {
+.fab-circle.left.data-v-74f5f9cd {
 	left: 0;
 }
-.fab-circle.right.data-v-df1596b4 {
+.fab-circle.right.data-v-74f5f9cd {
 	right: 0;
 }
-.fab-circle.top.data-v-df1596b4 {
+.fab-circle.top.data-v-74f5f9cd {
 	top: 0;
 }
-.fab-circle.bottom.data-v-df1596b4 {
+.fab-circle.bottom.data-v-74f5f9cd {
 	bottom: 0;
 }
-.fab-circle .icon-jia.data-v-df1596b4 {
+.fab-circle .icon-jia.data-v-74f5f9cd {
 	color: #ffffff;
 	font-size: 50rpx;
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
 }
-.fab-circle .icon-jia.active.data-v-df1596b4 {
+.fab-circle .icon-jia.active.data-v-74f5f9cd {
 	-webkit-transform: rotate(135deg);
 	        transform: rotate(135deg);
 }
-.fab-content.data-v-df1596b4 {
+.fab-content.data-v-74f5f9cd {
 	background: #6699cc;
 	box-sizing: border-box;
 	display: -webkit-box;
@@ -103,17 +103,17 @@
 	transition: all 0.2s;
 	width: 110rpx;
 }
-.fab-content.left.data-v-df1596b4 {
+.fab-content.left.data-v-74f5f9cd {
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
 	        justify-content: flex-start;
 }
-.fab-content.right.data-v-df1596b4 {
+.fab-content.right.data-v-74f5f9cd {
 	-webkit-box-pack: end;
 	-webkit-justify-content: flex-end;
 	        justify-content: flex-end;
 }
-.fab-content.flexDirection.data-v-df1596b4 {
+.fab-content.flexDirection.data-v-74f5f9cd {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
@@ -122,7 +122,7 @@
 	-webkit-justify-content: flex-end;
 	        justify-content: flex-end;
 }
-.fab-content.flexDirectionStart.data-v-df1596b4 {
+.fab-content.flexDirectionStart.data-v-74f5f9cd {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
@@ -131,7 +131,7 @@
 	-webkit-justify-content: flex-start;
 	        justify-content: flex-start;
 }
-.fab-content.flexDirectionEnd.data-v-df1596b4 {
+.fab-content.flexDirectionEnd.data-v-74f5f9cd {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
@@ -140,7 +140,7 @@
 	-webkit-justify-content: flex-end;
 	        justify-content: flex-end;
 }
-.fab-content .fab-item.data-v-df1596b4 {
+.fab-content .fab-item.data-v-74f5f9cd {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -162,15 +162,15 @@
 	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
 }
-.fab-content .fab-item.active.data-v-df1596b4 {
+.fab-content .fab-item.active.data-v-74f5f9cd {
 	opacity: 1;
 }
-.fab-content .fab-item .content-image.data-v-df1596b4 {
+.fab-content .fab-item .content-image.data-v-74f5f9cd {
 	width: 50rpx;
 	height: 50rpx;
 	margin-bottom: 5rpx;
 }
-.fab-content .fab-item.first.data-v-df1596b4 {
+.fab-content .fab-item.first.data-v-74f5f9cd {
 	width: 110rpx;
 }
 @font-face {
@@ -178,17 +178,17 @@
 	src: url('https://at.alicdn.com/t/font_1028200_xhbo4rn58rp.ttf?t=1548214263520')
 		format('truetype');
 }
-.icon.data-v-df1596b4 {
+.icon.data-v-74f5f9cd {
 	font-family: 'iconfont' !important;
 	font-size: 16px;
 	font-style: normal;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-.icon-jia.data-v-df1596b4:before {
+.icon-jia.data-v-74f5f9cd:before {
 	content: '\E630';
 }
-.icon-arrow-up.data-v-df1596b4:before {
+.icon-arrow-up.data-v-74f5f9cd:before {
 	content: '\E603';
 }
 

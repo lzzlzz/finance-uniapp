@@ -73,7 +73,7 @@ export default {
     }
 };
 </script>
-<style>
+<style lang="scss" scoped>
 div,
 scroll-view,
 swiper {
@@ -124,7 +124,7 @@ swiper {
     background-color: #0081ff;
 }
 .text-orange{
-  color: #f37b1d
+  color: $uni-bg-color-start;
 }
 
 .text-xl {

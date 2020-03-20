@@ -3,7 +3,7 @@
 		
 		<view class="headline"><text class="cuIcon-titles text-orange"></text>账龄详情</view>
 		<view class="uni-list">
-			<view class="uni-list-cell" hover-class="uni-list-cell-hover" v-for="(value, key) in data" :key="key" >
+			<view class="uni-list-cell" hover-class="uni-list-cell-hover" v-for="(value, key) in listData" :key="key" >
 				<view class="uni-media-list" >
 					<view class="uni-media-list-body">
 						<view class="uni-media-list-text-top">
@@ -26,12 +26,12 @@ export default {
 	data() {
 		return {};
 	},
-	props:['data'],
+	props:['listData'],
 	
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 
 
@@ -55,18 +55,17 @@ export default {
 	flex-direction: row;
 	justify-content: space-between;
 }
-.headline {
-		background-color: #e7e7e7;
+	.headline {
+		background-image: linear-gradient(to bottom right, $uni-bg-color-start, $uni-bg-color-end);
 		height: 83rpx;
-		font-weight: bold;
 		padding-left: 10rpx;
-		font-weight: bold;
 		padding-left: 40rpx;
 		padding-top: 30rpx;
 		font-size: 1.3em;
-	}
-	.text-orange {
-		color: #c7a566;
+		color: white;
+		.text-orange {
+			color:#ffe390 ;
+		}
 	}
 	
 </style>

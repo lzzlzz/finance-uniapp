@@ -53,7 +53,7 @@
 		height: 40upx;
 		border-top-right-radius: 10upx;
 		border-bottom-right-radius: 10upx;
-		background-color: $uni-bg-color-coffee
+		background-color: $uni-bg-color-start;
 	}
 	
 </style>

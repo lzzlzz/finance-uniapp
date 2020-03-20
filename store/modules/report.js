@@ -132,8 +132,10 @@ export default{
 		},
 		setCashFlowSumList(state,odata){
 			let data = odata.get('value');
+			
 			state.cashFlowSum.incomeList = state.cashFlowSum.incomeList.concat(data.filter((obj) => obj.direction == '流入'));
 			state.cashFlowSum.expenseList = state.cashFlowSum.expenseList.concat(data.filter((obj) => obj.direction == '流出'));
+			// console.log(state.cashFlowSum.incomeList)
 			state.cashFlowSum.status = odata.get('done') ? 'noMore' : 'more';
 		},
 		initCashFlowList(state,type){
@@ -211,6 +213,8 @@ export default{
 				console.log(res)
 				commit(mutationType,res)
 				uni.hideLoading();
+			}).catch(e=>{
+				console.log(e)
 			})
 		}
 		

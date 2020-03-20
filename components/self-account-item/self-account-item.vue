@@ -2,11 +2,9 @@
 	<view>
 		<view class="content">
 			
-			<text >{{itemName}}（{{item.unit}}）</text>
-			<text v-show="!loading" :class="{pronum:!item.isScale,stdnum:item.isScale}">{{item.amount|priceFormat(2,'',true)}}</text>
-			<text v-show="loading"><div class="loader-02"></div></text>
-			
-			    
+			<text class="content-text" >{{itemName}}（{{item.unit}}）</text>
+			<text class="content-text"  :class="{pronum:!item.isScale,stdnum:item.isScale}">{{item.amount|priceFormat(2,'',true)}}</text>
+			<!-- <text class="content-text" v-show="loading"><div class="loader-02"></div></text> -->
 			
 		</view>
 	</view>
@@ -54,13 +52,13 @@
 		display: flex;
 		flex-direction: column;
 		padding:30rpx ;
+		.content-text {
+			color: #F0F0F0;
+		}
 	
 	}
 	
-	text {
-		color: #F0F0F0;
-		
-	}
+	
 	
 	.pronum {
 		font-size: 1.7em;
@@ -69,41 +67,41 @@
 	.stdnum {
 		font-size: 1.2em;
 	}
-	[class*="loader-"] {
-	    display: inline-block;
-	    width: 1em;
-	    height: 1em;
-	    color: inherit;
-	    vertical-align: middle;
-	    pointer-events: none;
-	}
-	.loader-02 {
-		margin-left:50rpx;
-	    border: .2em solid transparent;
-	    border-left-color: currentcolor;
-	    border-right-color: currentcolor;
-	    border-radius: 50%;
-	    -webkit-animation: 1s loader-02 linear infinite;
-	    animation: 1s loader-02 linear infinite;
-	}
-	@-webkit-keyframes loader-02 {
-	    0% {
-	        -webkit-transform: rotate(0deg);
-	        transform: rotate(0deg);
-	    }
-	    100% {
-	        -webkit-transform: rotate(360deg);
-	        transform: rotate(360deg);
-	    }
-	}
-	@keyframes loader-02 {
-	    0% {
-	        -webkit-transform: rotate(0deg);
-	        transform: rotate(0deg);
-	    }
-	    100% {
-	        -webkit-transform: rotate(360deg);
-	        transform: rotate(360deg);
-	    }
-	}
+	// // [class*="loader-"] {
+	// //     display: inline-block;
+	// //     width: 1em;
+	// //     height: 1em;
+	// //     color: inherit;
+	// //     vertical-align: middle;
+	// //     pointer-events: none;
+	// // }
+	// .loader-02 {
+	// 	margin-left:50rpx;
+	//     border: .2em solid transparent;
+	//     border-left-color: currentcolor;
+	//     border-right-color: currentcolor;
+	//     border-radius: 50%;
+	//     -webkit-animation: 1s loader-02 linear infinite;
+	//     animation: 1s loader-02 linear infinite;
+	// }
+	// @-webkit-keyframes loader-02 {
+	//     0% {
+	//         -webkit-transform: rotate(0deg);
+	//         transform: rotate(0deg);
+	//     }
+	//     100% {
+	//         -webkit-transform: rotate(360deg);
+	//         transform: rotate(360deg);
+	//     }
+	// }
+	// @keyframes loader-02 {
+	//     0% {
+	//         -webkit-transform: rotate(0deg);
+	//         transform: rotate(0deg);
+	//     }
+	//     100% {
+	//         -webkit-transform: rotate(360deg);
+	//         transform: rotate(360deg);
+	//     }
+	// }
 </style>

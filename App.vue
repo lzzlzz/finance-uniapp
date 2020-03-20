@@ -36,7 +36,7 @@
 <style>
 	/*每个页面公共css */
 	@import './common/uni.css';
-	@import url("./common/icon.scss");
+	@import url("./common/icon.scss"); 
 	@import url("/components/gaoyia-parse/parse.css");
 	
 	page {
@@ -53,6 +53,11 @@
 		font-size: 28upx;
 		line-height: inherit
 	}
-	
+	/deep/.text-red{
+		color:red;
+	}
+	/deep/.text-green{
+		color:green;
+	}
 	
 </style>
