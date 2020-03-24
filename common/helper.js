@@ -145,7 +145,7 @@ const tax_calculate = function(data, list){
 	return list
 }
 
-//timetag true 计算月 false 计算年  cr 是收入需要计算的code dr 是支出需要的code 同时计算并返回收入支出和利润
+//  cr 是收入需要计算的code dr 是支出需要的code 同时计算并返回收入支出和利润
 const money = function(data, crCode, drCode, timetag){ //根据编码数组找里面对应的money 并加总
 				
 				let sum = 0.0; 
@@ -156,8 +156,8 @@ const money = function(data, crCode, drCode, timetag){ //根据编码数组找�
 				}else{
 					item = 'CurrencyYear';
 				}
-				let income = codeTovalue(data, crCode, item+'Cr')
-				let expense = codeTovalue(data, drCode, item+'Dr')
+				let income = codeTovalue(data, crCode, item+'Dr')
+				let expense = codeTovalue(data, drCode, item+'Cr')
 				return {
 					'income': income,
 					'expense': expense,

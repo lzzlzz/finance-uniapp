@@ -95,7 +95,7 @@ export default{
 			;({ income: state.detail.panel[0].amount,
 			   expense:state.detail.panel[1].amount,
 			   profit: state.detail.panel[2].amount
-			 } = helper.money(state.balanceRpt, ['5001'],['5401', '5403', '5602', '5603'], state.detail.method))
+			 } = helper.money(state.balanceRpt, ['1001','1002'],['1001','1002'], state.detail.method))
 		},
 		setDetailMethod(state,method){
 			state.detail.method = method
