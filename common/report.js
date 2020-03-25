@@ -135,31 +135,55 @@ class BalanceRpt extends Report{
 class CashFlowRpt extends Report{
 	
 	toMap(items){
-		//log(data);
+		log(items)
+		//主要的修改对象，将数据结构与原来的数据结构进行对应
 		let result = [];
-		for(let item of items){
-			let {direction,amount,summary,cashFlowItemName} = item;
-			let temp = {
-				'direction':direction,
-				'amount':amount,
-			}
-			if(this._reportName == 'GL_CashFlowSumRpt'){
-				Object.assign(temp,{
+		//如果是现金流量表
+		if(this._reportName == 'GL_CashFlowSumRpt'){
+			for(let item of items){
+				let {direction,amount,cashFlowItemName} = item;
+				let temp = {
+					'direction':direction,
+					'amount':amount,
 					'name':cashFlowItemName,
-				})				
-			}else{
-				Object.assign(temp,{
-					'name':summary,
-				})
+				}
+				result.push(temp);
+			}			
+		}else{
+			//如果非现金流量表，即现金流水表
+			//对结果进行两次遍历，第一次把流入dr的放入
+			for(let item of items){
+				let {summary,amountDr} = item;
+				if(amountDr.trim().length!==0){
+					//如果有发生就放入
+					let temp = {
+						'direction':'流入',
+						'amount':amountDr,
+						'name':summary,
+					}
+					result.push(temp);
+				}
 			}
-			result.push(temp);
+			//第二次把流出cr 放入	
+			for(let item of items){
+				let {summary,amountCr} = item;
+				if(amountCr.trim().length!==0){
+					//如果有发生就放入
+					let temp = {
+						'direction':'流出',
+						'amount':amountCr,
+						'name':summary,
+					}
+					result.push(temp);
+				}
+			}
 		}
+		
 		return result;
 	}
 	async getReportData(){//不强制more就从缓存中获取
 		return await this.getOnceData().next()
 			.value.then(([err,onceResult])=> {
-				//log(err,onceResult);
 			if(err){
 				throw(err);
 			}
@@ -176,7 +200,7 @@ class CashFlowRpt extends Report{
 			//将请求结果按页存入对应缓存,请求的时候如果当前页的缓存有就直接返回,否则执行查询
 			let currentIndex = this.param.pageIndex;
 			if(Report.cache.has(key)){
-				
+				log('从缓存。。。')
 				let pages = new Map(Report.cache.get(key));
 				if(!pages.has(currentIndex)){//如果没有当前页
 					pages.set(currentIndex,onceResult);
@@ -196,18 +220,23 @@ class CashFlowRpt extends Report{
 			}else{
 				//如果没有请求到最后一页就在原来的基础上加1
 				this.param.addPageIndex();
+				log('页数加1了',this.param.pageIndex)
 			}
 			//Report.cache.set(key,resultValue);
 			return result;
 		}).catch((e)=>console.log('请求出错:',e));
 		
 	}
+	//单步请求的方法
 	*getOnceData (){
 		while(true){
 			let key = this.key;
 			let currentIndex = this.param.pageIndex;
+			log(currentIndex)
 			//如果有当前报表的当前页面
 			let value = new Map(Report.cache.get(key)).get(currentIndex);
+			log(new Map(Report.cache.get(key)));
+			
 			if(Report.cache.has(key) && new Map(Report.cache.get(key)).has(currentIndex)){
 				yield new Promise((resolve,reject)=>{
 							return resolve([null,value]);

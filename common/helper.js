@@ -160,8 +160,7 @@ const money = function(data, crCode, drCode, timetag){ //根据编码数组找�
 				let expense = codeTovalue(data, drCode, item+'Cr')
 				return {
 					'income': income,
-					'expense': expense,
-					'profit':income-expense
+					'expense': expense
 				}	
 			};
 //根据列表中的code 从data(map 对象)中找key对应的值相加 
@@ -209,7 +208,7 @@ const showLoading = function(){
 		mask: false
 	});
 };
-// 对于js之间这个类得输入输出 输出加大括号 输入就加大括号 要不就都不加
+// 对于js之间这个类得输入输出 输出加大括号 输入就加大括号 要不就都不加 
 import config from '@/common/config.js'
 import ReportParam from '@/common/reportparam.js'
 import MinCache from '@/common/storage.js';

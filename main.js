@@ -16,7 +16,7 @@ Vue.component('uni-calendar',uniCalendar)
 Vue.filter('priceFormat', priceFormat)
 
 //启动生产消息,发布前要关闭
-Vue.config.productionTip = true
+Vue.config.productionTip = false
 
 App.mpType = 'app'
 

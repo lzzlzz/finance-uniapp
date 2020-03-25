@@ -13,7 +13,7 @@ const  spAgeAnalysisRpt = new AgeAnalysisRpt();
 spAgeAnalysisRpt.reportName = 'GL_SupplierAgeAnalysisSumRpt'
 //现金流水对象
 const cashFlowRpt = new CashFlowRpt()
-cashFlowRpt.reportName = 'GL_CashFlowDetailRpt'
+cashFlowRpt.reportName = 'GL_GLDetailRpt'
 //现金流量对象
 const cashFlowSumRpt = new CashFlowRpt()
 cashFlowSumRpt.reportName = 'GL_CashFlowSumRpt'
@@ -92,9 +92,13 @@ export default{
 			state.balanceRpt = data
 		},
 		setDetailPanel(state,data){ 
+			//19是营业利润这个科目在constants利润公式表中的位置
+			const profitIndex = 19
+			let methodIndex = state.detail.method==='month'?0:1;
+			state.detail.panel[2].amount = state.profit.profitList[profitIndex]["value"][methodIndex]
+			
 			;({ income: state.detail.panel[0].amount,
-			   expense:state.detail.panel[1].amount,
-			   profit: state.detail.panel[2].amount
+			    expense:state.detail.panel[1].amount
 			 } = helper.money(state.balanceRpt, ['1001','1002'],['1001','1002'], state.detail.method))
 		},
 		setDetailMethod(state,method){
@@ -139,6 +143,9 @@ export default{
 			state.cashFlowSum.status = odata.get('done') ? 'noMore' : 'more';
 		},
 		initCashFlowList(state,type){
+			//初始化报表对象的请求参数
+			let reportObj = (type==='sum')?cashFlowSumRpt:cashFlowRpt;
+			reportObj.param.init()
 			let stateObj = (type==='sum')?state.cashFlowSum:state.cashFlow;
 			stateObj.incomeList = []
 			stateObj.expenseList = []
@@ -157,9 +164,9 @@ export default{
 			balanceRpt.getReportData().then((res)=>{
 				console.log(res)
 				commit('setBalanceRpt',res)
+				commit('setProfitList',res)
 				commit('setDetailPanel',res)
 				commit('setBudgetList',res)
-				commit('setProfitList',res)
 				commit('setTaxList',res)
 				commit('changeDetailLoading')
 				uni.hideLoading()
@@ -208,7 +215,7 @@ export default{
 			let mutationType = (type==='sum')?'setCashFlowSumList':'setCashFlowList';
 			let reportObj = (type==='sum')?cashFlowSumRpt:cashFlowRpt;
 			reportObj.period = rootGetters["global/periodGetter"]
-			reportObj.param.pageIndex = 1
+			// reportObj.param.pageIndex = 1
 			reportObj.getReportData().then(res=>{
 				console.log(res)
 				commit(mutationType,res)
