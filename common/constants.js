@@ -67,24 +67,35 @@ GL_CashFlowSumRpt.set('reportTableColNames',"");
 GL_CashFlowSumRpt.set('reportTableCols',[]);
 GL_CashFlowSumRpt.set('pageSize',40);
 GL_CashFlowSumRpt.set('period','currentPeriod');
-const GL_CashFlowDetailRpt = new Map();
-GL_CashFlowDetailRpt.set('searchItems',[
+//现金流水表
+const GL_GLDetailRpt = new Map();
+GL_GLDetailRpt.set('searchItems',[
 										{
-											"ColumnName": "currentPeriod",
-											"BeginDefaultText": null,
-											"BeginDefault": null,
-											"EndDefaultText": null,
-											"EndDefault": null
-										},{
-										 "ColumnName": "isIncludeUnPost",
-										 "BeginDefaultText": "1",
-										 "BeginDefault": "1"
-									    }
+											"ColumnName": "period", 
+											"BeginDefaultText": "2019.11",
+											"BeginDefault": "2019.11",
+											"EndDefaultText": "2019.11",
+											"EndDefault": "2019.11"
+										},
+										{
+											"ColumnName": "accountName",
+											"BeginDefaultText": "1002",
+											"BeginDefault": "1002",
+											"EndDefaultText": "1002",
+											"EndDefault": "1002"
+										},
+										{
+											"ColumnName": "level",
+											"BeginDefaultText": "1",
+											"BeginDefault": "1",
+											"EndDefaultText": "1",
+											"EndDefault": "1"
+										}
 									]);
-GL_CashFlowDetailRpt.set('reportTableColNames',"");
-GL_CashFlowDetailRpt.set('reportTableCols',[]);
-GL_CashFlowDetailRpt.set('pageSize',40);
-GL_CashFlowDetailRpt.set('period','currentPeriod');
+GL_GLDetailRpt.set('reportTableColNames',"");
+GL_GLDetailRpt.set('reportTableCols',[]);
+GL_GLDetailRpt.set('pageSize',40);
+GL_GLDetailRpt.set('period','period');
 
 const GL_CustomerAgeAnalysisSumRpt = new Map();
 GL_CustomerAgeAnalysisSumRpt.set('searchItems',[
@@ -647,7 +658,7 @@ const taxList = [{
 export  default {
 	GL_BalanceSumRpt,
 	GL_CashFlowSumRpt,
-	GL_CashFlowDetailRpt,
+	GL_GLDetailRpt,
 	GL_CustomerAgeAnalysisSumRpt,
 	GL_SupplierAgeAnalysisSumRpt,
 	assetList,

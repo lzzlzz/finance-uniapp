@@ -145,7 +145,7 @@ const tax_calculate = function(data, list){
 	return list
 }
 
-//timetag true 计算月 false 计算年  cr 是收入需要计算的code dr 是支出需要的code 同时计算并返回收入支出和利润
+//  cr 是收入需要计算的code dr 是支出需要的code 同时计算并返回收入支出和利润
 const money = function(data, crCode, drCode, timetag){ //根据编码数组找里面对应的money 并加总
 				
 				let sum = 0.0; 
@@ -156,12 +156,11 @@ const money = function(data, crCode, drCode, timetag){ //根据编码数组找�
 				}else{
 					item = 'CurrencyYear';
 				}
-				let income = codeTovalue(data, crCode, item+'Cr')
-				let expense = codeTovalue(data, drCode, item+'Dr')
+				let income = codeTovalue(data, crCode, item+'Dr')
+				let expense = codeTovalue(data, drCode, item+'Cr')
 				return {
 					'income': income,
-					'expense': expense,
-					'profit':income-expense
+					'expense': expense
 				}	
 			};
 //根据列表中的code 从data(map 对象)中找key对应的值相加 
@@ -209,7 +208,7 @@ const showLoading = function(){
 		mask: false
 	});
 };
-// 对于js之间这个类得输入输出 输出加大括号 输入就加大括号 要不就都不加
+// 对于js之间这个类得输入输出 输出加大括号 输入就加大括号 要不就都不加 
 import config from '@/common/config.js'
 import ReportParam from '@/common/reportparam.js'
 import MinCache from '@/common/storage.js';

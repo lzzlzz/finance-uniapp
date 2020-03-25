@@ -77,6 +77,12 @@ class ReportParam {
 	set reportTableCols(value){
 		this.ReportTableCols = value;
 	}
+	init(){
+		//初始化报表对象，从第一页开始
+		this.PageIndex = 1;
+		this.TaskSessionID = null;
+		this.SolutionID = null;
+	}
 }
 import constants from '@/common/constants.js'
 export default ReportParam;
