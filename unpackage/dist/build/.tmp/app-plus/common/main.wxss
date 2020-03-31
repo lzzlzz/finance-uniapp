@@ -2737,6 +2737,11 @@ view {
 	font-size: 28rpx;
 	line-height: inherit
 }
-
+ .text-red{
+	color:red;
+}
+ .text-green{
+	color:green;
+}
 
 

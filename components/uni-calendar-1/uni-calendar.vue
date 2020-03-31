@@ -2,14 +2,14 @@
  <view class="uni-calendar__wrapper">
    <view class="uni-calenda__content">
      <view class="uni-calendar__panel">
-       <view
+       <view v-show="leftArrow"
          class="uni-calendar__date-befor"
          @tap="dataBefor(-1, 'month')"><text class="iconfont icon-jiantou" /></view>
        <view class="uni-calendar__panel-box">
          <view>{{ year }}年</view>
          <view>{{ month }}月</view>
        </view>
-       <view
+       <view v-show="rightArrow"
          class="uni-calendar__date-after uni-calendar__rollback"
          @tap="dataBefor(1, 'month')"><text class="iconfont icon-jiantou " />
  			 </view>
@@ -127,7 +127,31 @@ export default {
     this.init()
 	
   },
-  computed:mapState('global',['day','month','year']),
+  computed:{
+	  ...mapState({
+	  day:state=>state.global.day,
+	  month:state=>state.global.month,
+	  year:state=>state.global.year,
+	  isUser:state=>state.login.isUser,
+	  startMonth:state=>state.global.visitorPeriod.startMonth,
+	  endMonth:state=>state.global.visitorPeriod.endMonth,
+	  }),
+	  leftArrow:function(){
+		  //如果是访客且处于开始点，左侧箭头不显示
+		  if(!this.isUser&&this.month===this.startMonth){
+			  return false
+		  }
+		  return true
+	  },
+	  rightArrow:function(){
+	  		  //如果是访客且处于结束点，右侧箭头不显示
+	  		  if(!this.isUser&&this.month===this.endMonth){
+	  			  return false
+	  		  }
+	  		  return true
+	  }
+	  
+  },
   methods: {
 	...mapMutations('global',['setYear','setMonth']),
     init () {

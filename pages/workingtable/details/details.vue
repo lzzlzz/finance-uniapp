@@ -110,7 +110,6 @@
 			...mapActions('report',['getBalanceRpt','changeDetailMethod']),
 			change(e) {
 				console.log(e)
-				//获取报表数据
 				this.getBalanceRpt()
 			},
 			//切换按钮 

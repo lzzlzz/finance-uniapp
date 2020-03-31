@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.content.data-v-5e70d4ad {
+.content.data-v-cbdcdb74 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -34,50 +34,13 @@
           flex-direction: column;
   padding: 30rpx;
 }
-text.data-v-5e70d4ad {
-  color: #F0F0F0;
+.content .content-text.data-v-cbdcdb74 {
+    color: #F0F0F0;
 }
-.pronum.data-v-5e70d4ad {
+.pronum.data-v-cbdcdb74 {
   font-size: 1.7em;
 }
-.stdnum.data-v-5e70d4ad {
+.stdnum.data-v-cbdcdb74 {
   font-size: 1.2em;
-}
-[class*="loader-"].data-v-5e70d4ad {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  color: inherit;
-  vertical-align: middle;
-  pointer-events: none;
-}
-.loader-02.data-v-5e70d4ad {
-  margin-left: 50rpx;
-  border: .2em solid transparent;
-  border-left-color: currentcolor;
-  border-right-color: currentcolor;
-  border-radius: 50%;
-  -webkit-animation: 1s loader-02-data-v-5e70d4ad linear infinite;
-  animation: 1s loader-02-data-v-5e70d4ad linear infinite;
-}
-@-webkit-keyframes loader-02-data-v-5e70d4ad {
-0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-}
-100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-}
-}
-@keyframes loader-02-data-v-5e70d4ad {
-0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-}
-100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-}
 }
 

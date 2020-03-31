@@ -1,1 +1,1 @@
-<view class="data-v-10fb71c0"><self-collapse vue-id="45f87a2c-1" data="{{payable.list}}" title="应付账款明细" direction="贷方" data-event-opts="{{[['^click',[['getDetail']]]]}}" bind:click="__e" class="data-v-10fb71c0" bind:__l="__l"></self-collapse></view>
+<view class="data-v-58c40822"><self-collapse vue-id="45f87a2c-1" listData="{{payable.list}}" title="应付账款明细" direction="贷方" data-event-opts="{{[['^click',[['getDetail']]]]}}" bind:click="__e" class="data-v-58c40822" bind:__l="__l"></self-collapse></view>

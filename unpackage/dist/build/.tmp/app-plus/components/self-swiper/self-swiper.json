@@ -2,7 +2,6 @@
   "component": true,
   "usingComponents": {
     "wuc-tab": "/components/wuc-tab/wuc-tab",
-    "self-list": "/components/self-list/self-list",
     "uni-load-more": "/components/uni-load-more/uni-load-more"
   }
 }

@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view> 
 
 		<uni-calendar :insert="true" @change="change" />
 

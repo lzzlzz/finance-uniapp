@@ -1,1 +1,1 @@
-<view><self-collapse-item vue-id="2bb60306-1" data="{{payable.detail.items}}" bind:__l="__l"></self-collapse-item></view>
+<view><self-collapse-item vue-id="2bb60306-1" listData="{{payable.detail.items}}" bind:__l="__l"></self-collapse-item></view>

@@ -8,7 +8,7 @@
 				<view class="avator">
 					<image src="/static/images/l-img/avator.png" mode="aspectFit"></image>
 				</view>
-				<text v-if="isLog">您好,{{userInfo.name}} </text>
+				<text v-if="isLog">您好,{{userName}} </text>
 				<text v-else>您好，请登录</text>
 			</view>
 		</view>
@@ -45,7 +45,15 @@
 	import uniListItem from '@/components/l-components/uni-list-item/uni-list-item.vue'
 	
 	export default {
-		computed: mapState('login',['userInfo','isLog','isUser']),
+		computed:{
+			...mapState('login',['userInfo','isLog','isUser']),
+			userName:function(){
+				if(this.isUser){
+					return this.userInfo.name
+				}
+				return '游客'
+			}
+		} ,
 		components: {uniList,uniListItem, selfTitle},
         onLoad() {
             if (!this.isLog) {

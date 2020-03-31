@@ -15,7 +15,7 @@
 		<view class="service-body">
 			<uni-grid :column="3" :highlight="true" @change="open_registered_company_details">
 				<uni-grid-item v-for="(item, index1) in registered_company_list" :key="index1">
-					<image :src="item.url" class="image" mode="aspectFill" />
+					<view  :class="item.image" />
 					<text class="text">{{ item.text }}</text>
 				</uni-grid-item>
 			</uni-grid>
@@ -24,7 +24,7 @@
 		<view class="service-body">
 			<uni-grid :column="3" :highlight="true" @change="open_accounting_and_tax_reporting_details">
 				<uni-grid-item v-for="(item, index2) in accounting_and_tax_reporting_list" :key="index2">
-					<image :src="item.url" class="image" mode="aspectFill" />
+					<view  :class="item.image" />
 					<text class="text">{{ item.text }}</text>
 				</uni-grid-item>
 			</uni-grid>
@@ -34,7 +34,8 @@
 		<view class="service-body">
 			<uni-grid :column="3" :highlight="true" @change="open_change_of_enterprise_details">
 				<uni-grid-item v-for="(item, index3) in change_of_enterprise_list" :key="index3">
-					<image :src="item.url" class="image" mode="aspectFill" />
+					<!-- <image :src="item.url" class="image" mode="aspectFill" /> -->
+					<view  :class="item.image" />
 					<text class="text">{{ item.text }}</text>
 				</uni-grid-item>
 			</uni-grid>
@@ -76,65 +77,65 @@
 				],
 
 				registered_company_list: [{
-						url: '../../static/images/service-img/1215847.png',
+						image: 'icon icon-c1',
 						text: '有限公司'
 					},
 					{
-						url: '../../static/images/service-img/1215861.png',
+						image: 'icon icon-c2',
 						text: '合伙企业'
 					},
 					{
-						url: '../../static/images/service-img/1215852.png',
+						image: 'icon icon-c3',
 						text: '个人独资'
 					},
 					{
-						url: '../../static/images/service-img/1215849.png',
+						image: 'icon icon-c4',
 						text: '外资公司'
 					},
 					{
-						url: '../../static/images/service-img/1215868.png',
+						image: 'icon icon-c5',
 						text: '内资公司'
 					}
 
 				],
 
 				accounting_and_tax_reporting_list: [{
-						url: '../../static/images/service-img/1215843.png',
+						image: 'icon icon-t1',
 						text: '一般纳税人'
 					},
 					{
-						url: '../../static/images/service-img/1215854.png',
+						image: 'icon icon-t2',
 						text: '小规模纳税人'
 					}
 
 				],
 
 				change_of_enterprise_list: [{
-						url: '../../static/images/service-img/1215865.png',
+						image: 'icon icon-h1',
 						text: '地址变更'
 					},
 					{
-						url: '../../static/images/service-img/1215871.png',
+						image: 'icon icon-h2',
 						text: '法人变更'
 					},
 					{
-						url: '../../static/images/service-img/1215872.png',
+						image: 'icon icon-h3',
 						text: '股权变更'
 					},
 					{
-						url: '../../static/images/service-img/1215860.png',
+						image: 'icon icon-h4',
 						text: '注册资本金变更'
 					},
 					{
-						url: '../../static/images/service-img/1215878.png',
+						image: 'icon icon-h5',
 						text: '名称变更'
 					},
 					{
-						url: '../../static/images/service-img/1215887.png',
+						image: 'icon icon-h6',
 						text: '经营范围变更'
 					},
 					{
-						url: '../../static/images/service-img/1215870.png',
+						image: 'icon icon-h7',
 						text: '注销'
 					}
 
@@ -178,6 +179,7 @@
 </script>
 
 <style lang="scss" scoped>
+	@import  url('../../common/css/my/icon.css');
 	$service-title-padding :30rpx;
 	page {
 		display: flex;
@@ -212,5 +214,48 @@
 	.text {
 		font-size: 26upx;
 		margin-top: 10upx;
+	}
+	//图标
+	.icon-c1{
+		background-position: 0 100% ; //7,1a
+	}
+	.icon-c2{
+		background-position: 99.721% 35.103% ; //3,5a
+	}
+	.icon-c3{
+		background-position: 26.243% 16.429% ; //2,2a
+	}
+	.icon-c4{
+		background-position: 52.504% 16.898% ; //2,3a
+	}
+	.icon-c5{
+		background-position: 77.883% 84.743% ; //6,4a
+	}
+	.icon-t1{
+		background-position: 28.294% 100% ; //7,2a
+	}
+	.icon-t2{
+		background-position: 26.243% 0.45% ; //1,2a
+	}
+	.icon-h1{
+		background-position: 0.347% 86.288% ; //6,1a
+	}
+	.icon-h2{
+		background-position: 52.515% 0 ; //1,3a
+	}
+	.icon-h3{
+		background-position: 100% 84.504% ; //6,5a
+	}
+	.icon-h4{
+		background-position: 27.931% 84.824% ; //6,2a
+	}
+	.icon-h5{
+		background-position: 100% 100% ; //7,5a
+	}
+	.icon-h6{
+		background-position: 52.51% 84.685% ; //6,3a
+	}
+	.icon-h7{
+		background-position: 27.912% 68.32% ; //5,2a
 	}
 </style>

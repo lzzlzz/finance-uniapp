@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.weui-switch.data-v-0736e2f4 {
+.weui-switch.data-v-738632f8 {
   position: relative;
   display: block;
   position: relative;
@@ -39,7 +39,7 @@
   transition: background-color 0.1s, border 0.1s;
   cursor: pointer;
 }
-.weui-switch.data-v-0736e2f4:before {
+.weui-switch.data-v-738632f8:before {
   content: " ";
   position: absolute;
   top: 0;
@@ -54,7 +54,7 @@
   transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
 }
 /* 按钮 */
-.weui-switch.data-v-0736e2f4:after {
+.weui-switch.data-v-738632f8:after {
   content: " ";
   position: absolute;
   top: 0;
@@ -70,21 +70,21 @@
   transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
   transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
 }
-.weui-switch-on.data-v-0736e2f4 {
-  border-color: #f0f0f0;
-  background-color: #1AAD19;
-}
-/* 背景颜色设计 */
-.weui-switch-on.data-v-0736e2f4:before {
+.weui-switch-on.data-v-738632f8 {
   border-color: #f0f0f0;
   background-color: #ff8144;
 }
-.weui-switch-on.data-v-0736e2f4:after {
+/* 背景颜色设计 */
+.weui-switch-on.data-v-738632f8:before {
+  border-color: #f0f0f0;
+  background-color: #ff8144;
+}
+.weui-switch-on.data-v-738632f8:after {
   border-color: #ff5351;
   -webkit-transform: translateX(50rpx);
           transform: translateX(50rpx);
 }
-.switch-checked.data-v-0736e2f4 {
+.switch-checked.data-v-738632f8 {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -94,7 +94,7 @@
   -webkit-user-select: none;
           user-select: none;
 }
-.switch-ischecked.data-v-0736e2f4 {
+.switch-ischecked.data-v-738632f8 {
   width: 100%;
   height: 100%;
   position: absolute;

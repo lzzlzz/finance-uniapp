@@ -2,7 +2,6 @@
   "navigationBarTitleText": "资产及负债",
   "usingComponents": {
     "wuc-tab": "/components/wuc-tab/wuc-tab",
-    "self-list": "/components/self-list/self-list",
     "uni-calendar": "/components/uni-calendar-1/uni-calendar"
   }
 }

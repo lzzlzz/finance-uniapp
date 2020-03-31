@@ -208,6 +208,26 @@ const showLoading = function(){
 		mask: false
 	});
 };
+
+//格式化金额
+const priceFormat = function(arg,num=0,symbol,spilt=false){
+	arg=Number(arg).toFixed(num)
+	if(spilt==true){
+		if (arg.indexOf('.') == -1) {
+			arg=arg.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}else{
+			
+				var parts = arg.split(".");
+				parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				arg=parts.join(".");
+		}
+	}
+	
+	if(symbol){
+		arg=symbol+arg;
+	}
+	return arg;
+};
 // 对于js之间这个类得输入输出 输出加大括号 输入就加大括号 要不就都不加 
 import config from '@/common/config.js'
 import ReportParam from '@/common/reportparam.js'
@@ -220,5 +240,6 @@ export default {
    getdate,
    getAmountUnit,
    showLoading,
+   priceFormat,
   
 }

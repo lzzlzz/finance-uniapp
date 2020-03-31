@@ -56,11 +56,13 @@
 			}
 		},
 		computed:mapState({
-			isLog:state=>state.login.isLog
+			isLog:state=>state.login.isLog,
+			visitorPeriod:state => state.global.visitorPeriod.initInfo
 		}),
 		methods:{
 			...mapMutations('login',['setUserAccess']),
 			...mapActions('login',['login']),
+			...mapActions('global',['update']),
 			async Login({mp,detail}){
 				let loginInfo = {
 						//示例账套的用户名和密码
@@ -77,6 +79,9 @@
 					if(res){
 						if(mp.type==='submit'){
 							this.setUserAccess()
+						}else{
+							//游客登录 定位账套区间
+							this.update(this.visitorPeriod)
 						}
 						uni.switchTab({
 							url:'../workingtable/details/details'

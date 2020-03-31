@@ -67,7 +67,7 @@
   "appname": "慧界智能财税",
   "compilerVersion": "2.6.5",
   "usingComponents": {
-    "uni-icons": "/components/uni-icons/icons",
+    "uni-icons": "/components/uni-icons/uni-icons",
     "uni-calendar": "/components/uni-calendar-1/uni-calendar"
   }
 }

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import store from './store' 
-import priceFormat from '@/common/priceformat.js'
+import helper from '@/common/helper.js'
 import uniIcons from '@/components/uni-icons/uni-icons'
 import uniCalendar from "@/components/uni-calendar-1/uni-calendar"
 import MinCache from '@/common/storage.js'
@@ -13,7 +13,7 @@ Vue.component('uni-icons',uniIcons)
 Vue.component('uni-calendar',uniCalendar) 
 
 //注册全局过滤器
-Vue.filter('priceFormat', priceFormat)
+Vue.filter('priceFormat', helper.priceFormat)
 
 //启动生产消息,发布前要关闭
 Vue.config.productionTip = false

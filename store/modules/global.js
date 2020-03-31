@@ -4,7 +4,16 @@ export default{
 	state:{
 		day:'',
 		month:0,
-		year:2019
+		year:2019,
+		visitorPeriod:{
+			initInfo:{
+				day:'',
+				month:1,
+				year:2019,
+			},
+			startMonth:1,
+			endMonth:12
+		}
 	},
 	getters:{
 		periodGetter(state){

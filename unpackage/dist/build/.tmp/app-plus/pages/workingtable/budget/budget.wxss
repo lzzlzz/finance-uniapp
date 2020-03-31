@@ -1,31 +1,43 @@
 
-._div.data-v-bfadf7fe,
-scroll-view.data-v-bfadf7fe,
-swiper.data-v-bfadf7fe {
+._div.data-v-2a6438f2,
+scroll-view.data-v-2a6438f2,
+swiper.data-v-2a6438f2 {
 	box-sizing: border-box;
 }
-._div.data-v-bfadf7fe {
+._div.data-v-2a6438f2 {
   font-size: 28rpx;
   background-color: #f1f1f1;
 }
-.swiper.data-v-bfadf7fe {
+.swiper.data-v-2a6438f2 {
     height: calc(100vh - 290rpx);
 }
 /* 选项卡 */
-.text-orange.data-v-bfadf7fe{
+.text-orange.data-v-2a6438f2{
   color:#f37b1d
 }
-.text-black.data-v-bfadf7fe{
+.text-black.data-v-2a6438f2{
   color:#333333;
 }
-.bg-white.data-v-bfadf7fe{
+.bg-white.data-v-2a6438f2{
     background-color: #ffffff;
 }
-.text-center.data-v-bfadf7fe {
+.text-center.data-v-2a6438f2 {
     text-align: center;
 }
-scroll-view.data-v-bfadf7fe {
+scroll-view.data-v-2a6438f2 {
 	height: 100%;
 }
-
+.uni-list-cell.data-v-2a6438f2::after {
+	position: absolute;
+	z-index: 3;
+	right: 0;
+	bottom: 0;
+	left: 30rpx;
+	right: 30rpx;
+	height: 1px;
+	content: '';
+	-webkit-transform: scaleY(1);
+	transform: scaleY(1);
+	background-color: #c8c7cc;
+}
 

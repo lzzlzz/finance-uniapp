@@ -1,2 +1,1 @@
-setCssToHead(["@charset \x22UTF-8\x22;\n.",[1],"data-v-6cd80306 .",[1],"text-red { color: red; }\n.",[1],"data-v-6cd80306 .",[1],"text-green { color: green; }\n",],undefined,{path:"./pages/workingtable/cash_flow_statement/cash_flow_statement.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/workingtable/cash_flow_statement/cash_flow_statement.wxml') } }));
