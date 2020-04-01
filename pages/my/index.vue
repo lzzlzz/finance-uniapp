@@ -28,7 +28,7 @@
 		
 		<!-- 退出按钮 -->
 		<view class="exit-button">
-			<button  v-if="isLog" type="warn"  @tap="bindLogout">退出登录</button>
+			<button  v-if="isLog&&isUser" type="warn"  @tap="bindLogout">退出登录</button>
 			<button  v-else type="warn"  @tap="openLogin">点我登录</button>
 		</view>
 		
@@ -51,7 +51,7 @@
 				if(this.isUser){
 					return this.userInfo.name
 				}
-				return '游客'
+				return '登录可开启更多功能'
 			}
 		} ,
 		components: {uniList,uniListItem, selfTitle},

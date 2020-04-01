@@ -63,6 +63,8 @@ export default {
 					name:res.data.data.user.company,
 					token:res.data.data.access_token
 				}
+				//清除之前的所有缓存
+				mc.clear()
 				//将用户信息存入缓存
 				mc.set('userInfo',userInfo)
 				commit('setUserInfo',userInfo)

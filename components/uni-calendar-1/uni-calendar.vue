@@ -2,17 +2,22 @@
  <view class="uni-calendar__wrapper">
    <view class="uni-calenda__content">
      <view class="uni-calendar__panel">
-       <view v-show="leftArrow"
+       <view v-if="leftArrow"
          class="uni-calendar__date-befor"
          @tap="dataBefor(-1, 'month')"><text class="iconfont icon-jiantou" /></view>
+		<view v-else
+		  class="uni-calendar__date-befor"
+		  @tap="visitorAlert"><text class="iconfont icon-jiantou" /></view>
        <view class="uni-calendar__panel-box">
          <view>{{ year }}年</view>
          <view>{{ month }}月</view>
        </view>
-       <view v-show="rightArrow"
+       <view v-if="rightArrow"
          class="uni-calendar__date-after uni-calendar__rollback"
-         @tap="dataBefor(1, 'month')"><text class="iconfont icon-jiantou " />
- 			 </view>
+         @tap="dataBefor(1, 'month')"><text class="iconfont icon-jiantou " /></view>
+		 <view v-else
+		   class="uni-calendar__date-after uni-calendar__rollback"
+		   @tap="visitorAlert"><text class="iconfont icon-jiantou " /></view>
      </view>
    
    </view>
@@ -154,6 +159,21 @@ export default {
   },
   methods: {
 	...mapMutations('global',['setYear','setMonth']),
+	//访客提醒
+	visitorAlert(){
+		uni.showModal({
+			title:'提示',
+			content:'登录可查看更多数据',
+			confirmText:'登录',
+			success(res) {
+				if(res.confirm){
+					uni.reLaunch({
+						url:'../../../pages/my/login'
+					})
+				}
+			}
+		})
+	},
     init () {
       // 初始化日历
       // this.canlender = this.getWeek(this.date || new Date());

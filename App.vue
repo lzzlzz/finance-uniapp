@@ -1,25 +1,23 @@
 <script>
-	import {mapMutations} from 'vuex'
+	import {mapMutations, mapState, mapActions} from 'vuex'
 	export default {
 		globalData:{ 
 			year:2019,
 			month:10,
 		},
 		methods:{
-			...mapMutations('login',['setUserInfo','setLogState'])
+			...mapMutations('login',['setUserInfo','setLogState']),
+			...mapActions('global',['update']),
 			
 		},
+		computed:mapState({
+			visitorPeriod:state => state.global.visitorPeriod.initInfo
+		}),
 		onLaunch: function() { 
 			console.log('App Launch')
-			if(this.$mc.has('userInfo')){
-				//如果有缓存
-				this.setUserInfo(this.$mc.get('userInfo'))
-				this.setLogState(true)
-			}else{
-				uni.reLaunch({
-					url:'pages/my/login'
-				})
-			}
+			uni.reLaunch({
+				url:'pages/my/login'
+			})
 			
 			
 		},

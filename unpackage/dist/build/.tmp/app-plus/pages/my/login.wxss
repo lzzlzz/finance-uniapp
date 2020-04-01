@@ -24,12 +24,12 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.login.data-v-0a6f49b0 {
+.login.data-v-33276aad {
   height: 100%;
   background-image: -webkit-linear-gradient(bottom, #ff5351, #fff);
   background-image: linear-gradient(to top, #ff5351, #fff);
 }
-.login .login-container.data-v-0a6f49b0 {
+.login .login-container.data-v-33276aad {
     height: 100%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -39,7 +39,7 @@
     -webkit-flex-direction: column;
             flex-direction: column;
 }
-.login .login-container .logo.data-v-0a6f49b0 {
+.login .login-container .logo.data-v-33276aad {
       height: 40%;
       display: -webkit-box;
       display: -webkit-flex;
@@ -51,10 +51,10 @@
       -webkit-justify-content: center;
               justify-content: center;
 }
-.login .login-container .login-form.data-v-0a6f49b0 {
+.login .login-container .login-form.data-v-33276aad {
       height: 60%;
 }
-.login .login-container .login-form .login-input.data-v-0a6f49b0 {
+.login .login-container .login-form .login-input.data-v-33276aad {
         display: -webkit-box;
         display: -webkit-flex;
         display: flex;
@@ -65,19 +65,19 @@
                 align-items: center;
         padding: 6rpx 80rpx;
 }
-.login .login-container .login-form .login-input .uni-input.data-v-0a6f49b0 {
+.login .login-container .login-form .login-input .uni-input.data-v-33276aad {
           margin: 0 20rpx;
           height: 50rpx;
           padding: 15rpx 25rpx;
           line-height: 50rpx;
           font-size: 28rpx;
           background-color: transparent;
-          border-bottom: 2rpx solid white;
+          border-bottom: 2rpx solid black;
           -webkit-box-flex: 1;
           -webkit-flex: 1;
                   flex: 1;
 }
-.login .login-container .login-form .login-help.data-v-0a6f49b0 {
+.login .login-container .login-form .login-help.data-v-33276aad {
         display: -webkit-box;
         display: -webkit-flex;
         display: flex;
@@ -86,12 +86,13 @@
                 justify-content: flex-end;
         padding: 6rpx 70rpx 4rpx;
 }
-.login .login-container .login-form .login-btn.data-v-0a6f49b0 {
+.login .login-container .login-form .login-btn.data-v-33276aad {
+        width: 70%;
         background-color: #f1f1f1;
-        margin: 100rpx 70rpx 6rpx 70rpx;
+        margin: 100rpx auto  6rpx auto;
         border-radius: 40rpx;
 }
-.login .login-container .login-form .entry-btn.data-v-0a6f49b0 {
+.login .login-container .login-form .entry-btn.data-v-33276aad {
         margin-top: 10rpx;
 }
 

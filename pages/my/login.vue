@@ -12,26 +12,26 @@
 				<form  @submit="Login" @reset='Login'>
 					<!-- 用户名 -->
 					<view class="login-input">
-						<uni-icons type="person" size="30" ></uni-icons>
+						<uni-icons type="person-filled" size="30" ></uni-icons>
 						<input class="uni-input" type="text" placeholder="手机号" 
 							focus v-model="loginInfo.userName" name="userName" />
-						<uni-icons type="close" @click="loginInfo.userName=''"></uni-icons>
+						<uni-icons type="clear" @click="loginInfo.userName=''"></uni-icons>
 					</view>
 					
 					<!-- 密码 -->
 					<view  class="login-input">
-						<uni-icons type="locked" size="30" ></uni-icons>
+						<uni-icons type="locked-filled" size="30" ></uni-icons>
 						<input class="uni-input" :password="showPassword" placeholder="密码"
 							v-model="loginInfo.password" name="password" />
-						<uni-icons :type="showPassword?'eye':'eye-slash'" @click="showPassword=!showPassword"></uni-icons>
+						<uni-icons :type="showPassword?'eye-filled':'eye-slash-filled'" @click="showPassword=!showPassword"></uni-icons>
 					</view>
 					<!-- <view class="login-help">
 						<uni-icons type="help"></uni-icons>
 						<text class="uni-link">忘记密码</text>
 					</view> -->
 					
-						<button class="login-btn" id='3'   form-type="submit">登录</button>
-						<button class="login-btn entry-btn" id='4' form-type="reset">游客入口</button>
+						<button class="login-btn" id='3'  form-type="submit">登录</button>
+						<button class="login-btn entry-btn" id='4' form-type="reset">访客模式</button>
 				</form>
 			</view>
 			
@@ -77,6 +77,7 @@
 					//如果验证成功就发送登录请求
 					let res = await this.login(loginInfo)
 					if(res){
+						
 						if(mp.type==='submit'){
 							this.setUserAccess()
 						}else{
@@ -154,7 +155,7 @@
 						line-height:50upx;
 						font-size:28upx;
 						background-color: transparent;
-						border-bottom: 2rpx solid white;
+						border-bottom: 2rpx solid black;
 						flex: 1;
 					}
 				}
@@ -165,8 +166,9 @@
 					
 				}
 				.login-btn{
+					width: 70%;
 					background-color: #f1f1f1;
-					margin: 100rpx 70rpx 6rpx 70rpx;
+					margin: 100rpx auto  6rpx auto ;
 					border-radius: $uni-border-radius-lg;
 					
 				}
